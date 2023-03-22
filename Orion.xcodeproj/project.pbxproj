@@ -11,6 +11,7 @@
 		93D6703929CB14BB005DE788 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703829CB14BB005DE788 /* ViewController.swift */; };
 		93D6703B29CB14BC005DE788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703A29CB14BC005DE788 /* Assets.xcassets */; };
 		93D6703E29CB14BC005DE788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703C29CB14BC005DE788 /* Main.storyboard */; };
+		93D6704629CB187D005DE788 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6704529CB187D005DE788 /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		93D6703A29CB14BC005DE788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D6703D29CB14BC005DE788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93D6703F29CB14BC005DE788 /* Orion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Orion.entitlements; sourceTree = "<group>"; };
+		93D6704529CB187D005DE788 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				93D6703629CB14BB005DE788 /* AppDelegate.swift */,
 				93D6703829CB14BB005DE788 /* ViewController.swift */,
+				93D6704529CB187D005DE788 /* WindowController.swift */,
 				93D6703A29CB14BC005DE788 /* Assets.xcassets */,
 				93D6703C29CB14BC005DE788 /* Main.storyboard */,
 				93D6703F29CB14BC005DE788 /* Orion.entitlements */,
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93D6703929CB14BB005DE788 /* ViewController.swift in Sources */,
+				93D6704629CB187D005DE788 /* WindowController.swift in Sources */,
 				93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
