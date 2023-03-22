@@ -10,8 +10,9 @@ import WebKit
 
 class ViewController: NSViewController {
 
-    var wkView: WKWebView?
     weak var mainWindow: WindowController?
+
+    private var wkView: WKWebView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,14 @@ class ViewController: NSViewController {
         guard let url = URL(string: string) else { return }
         let request = URLRequest(url: url)
         wkView?.load(request)
+    }
+
+    func goBack() {
+        wkView?.goBack()
+    }
+
+    func goForward() {
+        wkView?.goForward()
     }
 }
 

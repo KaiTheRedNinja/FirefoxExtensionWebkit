@@ -27,13 +27,4 @@ class WindowController: NSWindowController {
         // configure the VC
         self.viewController?.mainWindow = self
     }
-
-    func changePageURL(to newValue: String) {
-        viewController?.loadPage(string: newValue)
-    }
-
-    func updateAddressBar(to newValue: String) {
-        print("Address bar: \(addressBar?.description)")
-        addressBar?.textField.stringValue = newValue
-    }
 }
