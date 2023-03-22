@@ -8,8 +8,8 @@
 import Cocoa
 
 class WindowController: NSWindowController {
-    var viewController: ViewController? {
-        self.contentViewController as? ViewController
+    var pageViewController: PageViewController? {
+        self.contentViewController as? PageViewController
     }
 
     var addressBar: AddressBarView?
@@ -25,6 +25,6 @@ class WindowController: NSWindowController {
         window?.titleVisibility = .hidden
 
         // configure the VC
-        self.viewController?.mainWindow = self
+        self.pageViewController?.mainWindow = self
     }
 }

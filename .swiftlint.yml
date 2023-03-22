@@ -1,0 +1,204 @@
+# Swiftlint configuration file.
+# From AuroraEditor and https://github.com/Lickability/swift-best-practices/blob/main/.swiftlint.yml
+
+# Disabled rule, reason.
+disabled_rules:
+  - todo # New project, we have a lot of // TODO:
+
+# Exclude triggering type names.
+type_name:
+  excluded:
+    - ID
+
+# Exclude triggering identifier names.
+identifier_name:
+  excluded:
+    - id
+    - vc
+    # (short) File extensions:
+    - c
+    - m
+    - h
+    - js
+    - md
+    - py
+    - go
+    - ts
+    - txt
+    - sh
+    - pf
+    - r
+    - q
+    - tp
+    - xl
+    - hy
+    - d
+    - cs
+
+# cyclomatic_complexity (ignore case)
+cyclomatic_complexity:
+  ignores_case_statements: true
+
+# Opt in rules, we want it more stricter.
+opt_in_rules:
+  - missing_docs
+  - modifier_order
+  - convenience_type
+  - identical_operands
+  - array_init
+  - attributes
+  - block_based_kvo
+  - class_delegate_protocol
+  - closing_brace
+  - closure_parameter_position
+  - closure_spacing
+  - colon
+  - comma
+  - compiler_protocol_init
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - control_statement
+  - discarded_notification_center_observer
+  - discouraged_direct_init
+  - discouraged_optional_boolean
+  - duplicate_imports
+  - dynamic_inline
+  - empty_collection_literal
+  - empty_count
+  - empty_enum_arguments
+  - empty_parameters
+  - empty_parentheses_with_trailing_closure
+  - empty_string
+  - explicit_init
+  - fallthrough
+  - fatal_error_message
+  - first_where
+  - flatmap_over_map_reduce
+  - for_where
+  - force_cast
+  - force_try
+  - implicit_getter
+  - is_disjoint
+  - joined_default_parameter
+  - last_where
+  - leading_whitespace
+  - legacy_cggeometry_functions
+  - legacy_constant
+  - legacy_constructor
+  - legacy_hashing
+  - legacy_nsgeometry_functions
+  - lower_acl_than_parent
+  - mark
+  - multiline_parameters
+  - multiple_closures_with_trailing_closure
+  - no_space_in_method_call
+  - notification_center_detachment
+  - opening_brace
+  - operator_whitespace
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - private_action
+  - private_outlet
+  - private_over_fileprivate
+  - private_unit_test
+  - prohibited_super_call
+  - protocol_property_accessors_order
+  - redundant_discardable_let
+  - redundant_nil_coalescing
+  - redundant_objc_attribute
+  - redundant_optional_initialization
+  - redundant_void_return
+  - required_enum_case
+  - return_arrow_whitespace
+  - shorthand_operator
+  - single_test_class
+  - sorted_first_last
+  - statement_position
+  - superfluous_disable_command
+  - switch_case_alignment
+  - syntactic_sugar
+  - trailing_comma
+  - trailing_newline
+  - trailing_semicolon
+  - unneeded_break_in_switch
+  - unused_control_flow_label
+  - unused_closure_parameter
+  - unused_enumerated
+  - unused_optional_binding
+  - unused_setter_value
+  - valid_ibinspectable
+  - vertical_parameter_alignment
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace
+  - vertical_whitespace_closing_braces
+  - void_return
+  - weak_delegate
+  - xctfail_message
+  - yoda_condition
+  - reduce_boolean
+  - nsobject_prefer_isequal
+  - unused_capture_list
+  - unowned_variable_capture
+  - duplicate_enum_cases
+  - legacy_multiple
+
+attributes:
+  always_on_same_line: ["@IBAction", "@IBSegueAction", "@NSManaged", "@discardableResult", "@escaping", "@objc"]
+
+# Custom configuration for nesting, this needs to be removed at some point.
+nesting:
+  type_level:
+    warning: 2 # warning if you nest 2 level deep instead of 1
+    error: 3 # error if you nest 3 level deep instead of 1
+
+# Custom rules
+custom_rules:
+  # Prefer spaces over tabs.
+  spaces_over_tabs:
+    included: ".*\\.swift"
+    name: "Spaces over Tabs"
+    regex: "\t"
+    message: "Prefer spaces for indents over tabs. See Xcode setting: 'Text Editing' -> 'Indentation'"
+    severity: warning
+
+  # @Something needs a new line
+  at_attributes_newlining:
+    name: "Significant attributes"
+    message: "Significant @attributes should be on an extra line"
+    included: ".*.swift"
+    regex: '(@objc\([^\)]+\)|@nonobjc|@discardableResult|@propertyWrapper|@UIApplicationMain|@dynamicMemberLookup|@_cdecl\([^\)]+\))[^\n]'
+    severity: error
+
+  # forbid multiple empty lines
+  multiple_empty_lines:
+    included: ".*.swift"
+    name: "Multiple Empty Lines"
+    regex: '((?:\s*\n){3,})'
+    message: "There are too many line breaks"
+    severity: error
+
+  # one space after a comma
+  comma_space_rule:
+    regex: ",[ ]{2,}"
+    message: "Expected only one space after ',"
+    severity: error
+
+  # Disable usage of // swiftlint:disable (rulename)
+  swiftlint_file_disabling:
+    included: ".*.swift"
+    name: "SwiftLint File Disabling"
+    regex: "swiftlint:disable\\s"
+    match_kinds: comment
+    message: "Use swiftlint:disable:next or swiftlint:disable:this"
+    severity: error
+
+  # Disable Xcode placeholders like <#Description#>
+  no_placeholders:
+    included: ".*.swift"
+    name: "No Placeholders"
+    regex: "\\<\\#([a-zA-Z]+)\\#\\>"
+    message: "Please do not use Xcode's placeholders."
+    severity: warning

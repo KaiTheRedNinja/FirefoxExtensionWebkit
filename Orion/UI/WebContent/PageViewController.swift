@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PageViewController.swift
 //  Orion
 //
 //  Created by Kai Quan Tay on 22/3/23.
@@ -8,7 +8,7 @@
 import Cocoa
 import WebKit
 
-class ViewController: NSViewController {
+class PageViewController: NSViewController {
 
     weak var mainWindow: WindowController?
 
@@ -50,7 +50,7 @@ class ViewController: NSViewController {
     }
 }
 
-extension ViewController: WKNavigationDelegate, WKDownloadDelegate {
+extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
     // MARK: Navigation
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("Web view started navigation!")

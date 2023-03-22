@@ -9,15 +9,15 @@ import Cocoa
 
 extension WindowController {
     @objc func goBack() {
-        viewController?.goBack()
+        pageViewController?.goBack()
     }
 
     @objc func goForward() {
-        viewController?.goForward()
+        pageViewController?.goForward()
     }
 
     func changePageURL(to newValue: String) {
-        viewController?.loadPage(string: newValue)
+        pageViewController?.loadPage(string: newValue)
     }
 
     func updateAddressBar(to newValue: String) {

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703629CB14BB005DE788 /* AppDelegate.swift */; };
-		93D6703929CB14BB005DE788 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703829CB14BB005DE788 /* ViewController.swift */; };
+		93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703829CB14BB005DE788 /* PageViewController.swift */; };
 		93D6703B29CB14BC005DE788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703A29CB14BC005DE788 /* Assets.xcassets */; };
 		93D6703E29CB14BC005DE788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703C29CB14BC005DE788 /* Main.storyboard */; };
 		93D6704629CB187D005DE788 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6704529CB187D005DE788 /* WindowController.swift */; };
@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		93D6703329CB14BB005DE788 /* Orion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D6703629CB14BB005DE788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93D6703829CB14BB005DE788 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		93D6703829CB14BB005DE788 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		93D6703A29CB14BC005DE788 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93D6703D29CB14BC005DE788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93D6703F29CB14BC005DE788 /* Orion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Orion.entitlements; sourceTree = "<group>"; };
@@ -62,18 +62,66 @@
 		93D6703529CB14BB005DE788 /* Orion */ = {
 			isa = PBXGroup;
 			children = (
+				93FC925B29CB492100BAB980 /* Utils */,
+				93FC925929CB48F900BAB980 /* Application */,
+				93FC925D29CB493700BAB980 /* UI */,
+				93FC925E29CB494500BAB980 /* Model */,
+				93D6703F29CB14BC005DE788 /* Orion.entitlements */,
+			);
+			path = Orion;
+			sourceTree = "<group>";
+		};
+		93FC925929CB48F900BAB980 /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				93D6703629CB14BB005DE788 /* AppDelegate.swift */,
-				93D6703829CB14BB005DE788 /* ViewController.swift */,
-				93FC925729CB46B800BAB980 /* FileManager.swift */,
+				93D6703A29CB14BC005DE788 /* Assets.xcassets */,
+				93D6703C29CB14BC005DE788 /* Main.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		93FC925A29CB490D00BAB980 /* Window,Toolbar */ = {
+			isa = PBXGroup;
+			children = (
 				93D6704529CB187D005DE788 /* WindowController.swift */,
 				93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */,
 				93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */,
 				93FC925329CB3BA500BAB980 /* AddressBarView.swift */,
-				93D6703A29CB14BC005DE788 /* Assets.xcassets */,
-				93D6703C29CB14BC005DE788 /* Main.storyboard */,
-				93D6703F29CB14BC005DE788 /* Orion.entitlements */,
 			);
-			path = Orion;
+			path = "Window,Toolbar";
+			sourceTree = "<group>";
+		};
+		93FC925B29CB492100BAB980 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				93FC925729CB46B800BAB980 /* FileManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		93FC925C29CB492800BAB980 /* WebContent */ = {
+			isa = PBXGroup;
+			children = (
+				93D6703829CB14BB005DE788 /* PageViewController.swift */,
+			);
+			path = WebContent;
+			sourceTree = "<group>";
+		};
+		93FC925D29CB493700BAB980 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				93FC925A29CB490D00BAB980 /* Window,Toolbar */,
+				93FC925C29CB492800BAB980 /* WebContent */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		93FC925E29CB494500BAB980 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
-				93D6703929CB14BB005DE788 /* ViewController.swift in Sources */,
+				93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */,
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
 				93FC925829CB46B800BAB980 /* FileManager.swift in Sources */,
 				93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */,
