@@ -27,12 +27,22 @@ extension WindowController: NSToolbarDelegate {
         case .addressBar:
             // create the address bar
             let item = NSToolbarItem(itemIdentifier: .addressBar)
-            item.view = NSImageView(image: .init(systemSymbolName: "circle", accessibilityDescription: nil)!)
+            let addressBar = AddressBarView(frame: .init(x: 0,
+                                                         y: -2,
+                                                         width: (window?.frame.width ?? 800) - 100,
+                                                         height: 25))
+            addressBar.mainWindow = self
+            self.addressBar = addressBar
+            item.view = addressBar
             return item
         case .plusButton:
             // create the plus button
             let item = NSToolbarItem(itemIdentifier: .plusButton)
-            item.view = NSImageView(image: .init(systemSymbolName: "plus", accessibilityDescription: nil)!)
+            let button = NSButton(image: .init(systemSymbolName: "plus", accessibilityDescription: nil)!,
+                                  target: nil,
+                                  action: nil)
+            button.bezelStyle = .recessed
+            item.view = button
             return item
         default:
             return .init(itemIdentifier: itemIdentifier)
