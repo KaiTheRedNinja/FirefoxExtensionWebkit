@@ -12,6 +12,7 @@
 		93D6703B29CB14BC005DE788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703A29CB14BC005DE788 /* Assets.xcassets */; };
 		93D6703E29CB14BC005DE788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703C29CB14BC005DE788 /* Main.storyboard */; };
 		93D6704629CB187D005DE788 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6704529CB187D005DE788 /* WindowController.swift */; };
+		93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		93D6703D29CB14BC005DE788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93D6703F29CB14BC005DE788 /* Orion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Orion.entitlements; sourceTree = "<group>"; };
 		93D6704529CB187D005DE788 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+NSToolbarDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				93D6703629CB14BB005DE788 /* AppDelegate.swift */,
 				93D6703829CB14BB005DE788 /* ViewController.swift */,
 				93D6704529CB187D005DE788 /* WindowController.swift */,
+				93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */,
 				93D6703A29CB14BC005DE788 /* Assets.xcassets */,
 				93D6703C29CB14BC005DE788 /* Main.storyboard */,
 				93D6703F29CB14BC005DE788 /* Orion.entitlements */,
@@ -71,6 +74,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93D6704229CB14BC005DE788 /* Build configuration list for PBXNativeTarget "Orion" */;
 			buildPhases = (
+				93FC925229CB3A9300BAB980 /* Run SwiftLint */,
 				93D6702F29CB14BB005DE788 /* Sources */,
 				93D6703029CB14BB005DE788 /* Frameworks */,
 				93D6703129CB14BB005DE788 /* Resources */,
@@ -129,12 +133,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		93FC925229CB3A9300BAB980 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint --strict\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		93D6702F29CB14BB005DE788 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				93D6703929CB14BB005DE788 /* ViewController.swift in Sources */,
+				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
 				93D6704629CB187D005DE788 /* WindowController.swift in Sources */,
 				93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */,
 			);
