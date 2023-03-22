@@ -15,6 +15,7 @@
 		93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */; };
 		93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925329CB3BA500BAB980 /* AddressBarView.swift */; };
 		93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */; };
+		93FC925829CB46B800BAB980 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925729CB46B800BAB980 /* FileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+NSToolbarDelegate.swift"; sourceTree = "<group>"; };
 		93FC925329CB3BA500BAB980 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Navigation.swift"; sourceTree = "<group>"; };
+		93FC925729CB46B800BAB980 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				93D6703629CB14BB005DE788 /* AppDelegate.swift */,
 				93D6703829CB14BB005DE788 /* ViewController.swift */,
+				93FC925729CB46B800BAB980 /* FileManager.swift */,
 				93D6704529CB187D005DE788 /* WindowController.swift */,
 				93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */,
 				93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */,
@@ -169,6 +172,7 @@
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
 				93D6703929CB14BB005DE788 /* ViewController.swift in Sources */,
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
+				93FC925829CB46B800BAB980 /* FileManager.swift in Sources */,
 				93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */,
 				93D6704629CB187D005DE788 /* WindowController.swift in Sources */,
 				93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */,
