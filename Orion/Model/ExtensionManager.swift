@@ -11,6 +11,8 @@ class ExtensionManager {
     static var shared: ExtensionManager = .init()
     private init() {}
 
+    var extensions: [FirefoxExtension] = []
+
     /// Loads an XPI firefox extension
     func loadXPI(url: URL) {
         guard let unzippedFilePath = FirefoxExtension.unzipXPI(url: url, deleteOnFail: true) else {
@@ -23,9 +25,13 @@ class ExtensionManager {
     func loadExtension(extensionDirectory: URL) {
         let manifestURL = extensionDirectory.appending(component: "manifest.json")
         print("Loading manifest \(manifestURL)")
-        let ffExtension = FirefoxExtension.decodeFromManifest(manifestURL: manifestURL)
+        guard let ffExtension = FirefoxExtension.decodeFromManifest(manifestURL: manifestURL) else {
+            print("Could not load extension")
+            return
+        }
 
         // TODO: do smth with the extension
+        extensions.append(ffExtension)
     }
 
     func loadExtensions() {
