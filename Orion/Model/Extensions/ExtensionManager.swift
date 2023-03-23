@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Combine
 
 class ExtensionManager {
     static var shared: ExtensionManager = .init()
@@ -13,6 +14,7 @@ class ExtensionManager {
         loadExtensions()
     }
 
+    @Published
     var extensions: [FirefoxExtension] = []
 
     /// Loads an XPI firefox extension
