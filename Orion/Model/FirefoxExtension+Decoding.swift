@@ -27,6 +27,7 @@ extension FirefoxExtension {
         guard let author: String = json["author"] as? String,
               let name: String = json["name"] as? String,
               let description: String = json["description"] as? String,
+              let popupPage: String = (json["browser_action"] as? [String: Any])?["default_popup"] as? String,
               let optionsUIPage: String = (json["options_ui"] as? [String: Any])?["page"] as? String,
               let permissions: [String] = json["permissions"] as? [String] else {
             print("Could not decode")
@@ -48,7 +49,8 @@ extension FirefoxExtension {
                                            name: name,
                                            path: manifestURL.deletingLastPathComponent(),
                                            description: description,
-                                           optionsUIPage: optionsUIPage,
+                                           popupPage: popupPage,
+                                           optionsPage: optionsUIPage,
                                            permissions: permissions)
 
         return ffExtension

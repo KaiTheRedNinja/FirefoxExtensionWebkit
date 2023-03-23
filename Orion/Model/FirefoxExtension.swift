@@ -14,7 +14,8 @@ struct FirefoxExtension {
     let name: String
     let path: URL
     let description: String
-    let optionsUIPage: String
+    let popupPage: String
+    let optionsPage: String
     let permissions: [String]
 
     init(author: String,
@@ -22,14 +23,16 @@ struct FirefoxExtension {
          name: String,
          path: URL,
          description: String,
-         optionsUIPage: String,
+         popupPage: String,
+         optionsPage: String,
          permissions: [String]) {
         self.author = author
         self.icons = icons
         self.name = name
         self.path = path
         self.description = description
-        self.optionsUIPage = optionsUIPage
+        self.popupPage = popupPage
+        self.optionsPage = optionsPage
         self.permissions = permissions
 
         let size = 24
