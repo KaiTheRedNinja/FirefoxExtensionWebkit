@@ -9,24 +9,19 @@ import Foundation
 import ZIPFoundation
 
 extension FirefoxExtension {
-    static func decodeFromXPI(url: URL) {
-        guard let unzippedFilePath = unzipXPI(url: url, deleteOnFail: true) else {
-            print("Could not unzip XPI")
-            return
-        }
 
-        decodeManifest(manifestURL: unzippedFilePath.appending(component: "manifest.json"))
-    }
-
-    static func decodeManifest(manifestURL: URL) {
+    /// Decodes a `manifest.json` into a ``FirefoxExtension``
+    /// - Parameter manifestURL: The URL of the `manifest.json`
+    /// - Returns: The firefox extension, or nil if unsuccessful
+    public static func decodeFromManifest(manifestURL: URL) -> FirefoxExtension? {
         guard let contents = try? Data(contentsOf: manifestURL) else {
             print("Could not find manifest.json")
-            return
+            return nil
         }
 
         guard let json = try? JSONSerialization.jsonObject(with: contents) as? [String: Any] else {
             print("Could not decode XPI")
-            return
+            return nil
         }
 
         guard let author: String = json["author"] as? String,
@@ -35,15 +30,15 @@ extension FirefoxExtension {
               let optionsUIPage: String = (json["options_ui"] as? [String: Any])?["page"] as? String,
               let permissions: [String] = json["permissions"] as? [String] else {
             print("Could not decode")
-            return
+            return nil
         }
 
-        guard let iconsRaw = json["icons"] as? [String: String] else { return }
+        guard let iconsRaw = json["icons"] as? [String: String] else { return nil }
         var icons = [Int: String]()
         for (key, value) in iconsRaw {
             guard let size = Int(key) else {
                 print("Could not get icon size")
-                return
+                return nil
             }
             icons[size] = value
         }
@@ -55,12 +50,18 @@ extension FirefoxExtension {
                                            optionsUIPage: optionsUIPage,
                                            permissions: permissions)
 
-        print("Successfully created firefox extension")
+        return ffExtension
     }
 
-    private static func unzipXPI(url: URL,
-                                 deleteOnSuccess: Bool = true,
-                                 deleteOnFail: Bool = false) -> URL? {
+    /// Unzips a firefox extension XPI file
+    /// - Parameters:
+    ///   - url: the url of the XPI file
+    ///   - deleteOnSuccess: If the XPI should be deleted upon successful unzipping (true by default)
+    ///   - deleteOnFail: If the XPI should be deleted upon unsuccessful unzipping (false by default)
+    /// - Returns: The URL representing a directory produced by unzipping the XPI file, or nil if unsuccessful
+    public static func unzipXPI(url: URL,
+                                deleteOnSuccess: Bool = true,
+                                deleteOnFail: Bool = false) -> URL? {
         guard url.description.hasSuffix(".xpi") else { return nil }
         var filename = url.lastPathComponent
         // remove the trailing .xpi

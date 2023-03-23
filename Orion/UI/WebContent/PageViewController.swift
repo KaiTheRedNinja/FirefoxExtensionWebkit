@@ -105,7 +105,19 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
                   decideDestinationUsing response: URLResponse,
                   suggestedFilename: String,
                   completionHandler: @escaping (URL?) -> Void) {
-        let url = FileManager.default.getDocumentsDirectory().appendingPathComponent(suggestedFilename)
+        print("Download suggestion: \(suggestedFilename)")
+        let fileManager = FileManager.default
+        var url = fileManager.getDocumentsDirectory().appending(component: suggestedFilename)
+        if suggestedFilename.hasSuffix(".xpi") {
+            url.deleteLastPathComponent()
+            url.append(component: "extensions/")
+            // ensure the extensions directory exists
+            print("Does url \(url.description) exist?")
+            if !fileManager.exists(file: url.description) {
+                try? fileManager.createDirectory(at: url, withIntermediateDirectories: true)
+            }
+            url.append(component: "\(suggestedFilename)")
+        }
         guard let sourceURL = download.originalRequest?.url else {
             print("Original request does not exist")
             return
@@ -121,8 +133,6 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
             return
         }
         downloadURLs.removeValue(forKey: sourceURL)
-        FirefoxExtension.decodeFromXPI(url: destinationURL)
+        ExtensionManager.shared.loadXPI(url: destinationURL)
     }
-
-    // TODO: Download finished
 }

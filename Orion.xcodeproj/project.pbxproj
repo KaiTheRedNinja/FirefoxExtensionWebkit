@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93D0A2F629CC50340070E680 /* ExtensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F529CC50340070E680 /* ExtensionManager.swift */; };
 		93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703629CB14BB005DE788 /* AppDelegate.swift */; };
 		93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703829CB14BB005DE788 /* PageViewController.swift */; };
 		93D6703B29CB14BC005DE788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703A29CB14BC005DE788 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93D0A2F529CC50340070E680 /* ExtensionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionManager.swift; sourceTree = "<group>"; };
 		93D6703329CB14BB005DE788 /* Orion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D6703629CB14BB005DE788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93D6703829CB14BB005DE788 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				93FC925F29CB498200BAB980 /* FirefoxExtension.swift */,
 				93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */,
+				93D0A2F529CC50340070E680 /* ExtensionManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
+				93D0A2F629CC50340070E680 /* ExtensionManager.swift in Sources */,
 				93FC926229CB4A1500BAB980 /* FirefoxExtension+Decoding.swift in Sources */,
 				93FC926029CB498200BAB980 /* FirefoxExtension.swift in Sources */,
 				93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */,
