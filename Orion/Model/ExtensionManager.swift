@@ -24,7 +24,6 @@ class ExtensionManager {
 
     func loadExtension(extensionDirectory: URL) {
         let manifestURL = extensionDirectory.appending(component: "manifest.json")
-        print("Loading manifest \(manifestURL)")
         guard let ffExtension = FirefoxExtension.decodeFromManifest(manifestURL: manifestURL) else {
             print("Could not load extension")
             return
@@ -37,13 +36,11 @@ class ExtensionManager {
     func loadExtensions() {
         let fileManager = FileManager.default
         let extensionsDirectory = fileManager.getDocumentsDirectory().appending(component: "extensions/")
-        print("Directory: \(extensionsDirectory)")
         guard let extensions = try? fileManager.contentsOfDirectory(atPath: extensionsDirectory.path) else {
             print("Could not get extensions")
             return
         }
         for extensionName in extensions {
-            print("Loading \(extensionName)")
             loadExtension(extensionDirectory: extensionsDirectory.appending(component: extensionName))
         }
     }

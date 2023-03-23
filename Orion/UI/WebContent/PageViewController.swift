@@ -55,17 +55,10 @@ class PageViewController: NSViewController {
 
 extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
     // MARK: Navigation
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("Web view started navigation!")
-    }
 
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        print("Finished!")
-        mainWindow?.updateAddressBar(to: webView.url?.description ?? "")
-    }
-
+    // finish
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("Failed :(")
+        mainWindow?.updateAddressBar(to: webView.url?.description ?? "")
     }
 
     // MARK: Downloads
@@ -83,8 +76,6 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
     func webView(_ webView: WKWebView,
                  decidePolicyFor navigationResponse: WKNavigationResponse,
                  decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        let response = navigationResponse.response
-        print("Deciding policy for \(response.url?.description ?? "no url")")
         if navigationResponse.canShowMIMEType {
             decisionHandler(.allow)
         } else {
@@ -105,23 +96,18 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
                   decideDestinationUsing response: URLResponse,
                   suggestedFilename: String,
                   completionHandler: @escaping (URL?) -> Void) {
-        print("Download suggestion: \(suggestedFilename)")
         let fileManager = FileManager.default
         var url = fileManager.getDocumentsDirectory().appending(component: suggestedFilename)
         if suggestedFilename.hasSuffix(".xpi") {
             url.deleteLastPathComponent()
             url.append(component: "extensions/")
             // ensure the extensions directory exists
-            print("Does url \(url.description) exist?")
             if !fileManager.exists(file: url.description) {
                 try? fileManager.createDirectory(at: url, withIntermediateDirectories: true)
             }
             url.append(component: "\(suggestedFilename)")
         }
-        guard let sourceURL = download.originalRequest?.url else {
-            print("Original request does not exist")
-            return
-        }
+        guard let sourceURL = download.originalRequest?.url else { return }
         downloadURLs[sourceURL] = url
         completionHandler(url)
     }
@@ -129,7 +115,6 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
     func downloadDidFinish(_ download: WKDownload) {
         guard let sourceURL = download.originalRequest?.url,
               let destinationURL = downloadURLs[sourceURL] else {
-            print("Original request or destination URL does not exist")
             return
         }
         downloadURLs.removeValue(forKey: sourceURL)
