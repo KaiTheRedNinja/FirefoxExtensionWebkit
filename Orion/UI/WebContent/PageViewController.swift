@@ -104,4 +104,6 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
         let url = getDocumentsDirectory().appendingPathComponent(suggestedFilename)
         completionHandler(url)
     }
+
+    // TODO: Download finished
 }

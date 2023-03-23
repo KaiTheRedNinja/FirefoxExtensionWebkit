@@ -16,6 +16,9 @@
 		93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925329CB3BA500BAB980 /* AddressBarView.swift */; };
 		93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */; };
 		93FC925829CB46B800BAB980 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925729CB46B800BAB980 /* FileManager.swift */; };
+		93FC926029CB498200BAB980 /* FirefoxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925F29CB498200BAB980 /* FirefoxExtension.swift */; };
+		93FC926229CB4A1500BAB980 /* FirefoxExtension+Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */; };
+		93FC926529CB4D3200BAB980 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 93FC926429CB4D3200BAB980 /* ZIPFoundation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,8 @@
 		93FC925329CB3BA500BAB980 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Navigation.swift"; sourceTree = "<group>"; };
 		93FC925729CB46B800BAB980 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		93FC925F29CB498200BAB980 /* FirefoxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirefoxExtension.swift; sourceTree = "<group>"; };
+		93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirefoxExtension+Decoding.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93FC926529CB4D3200BAB980 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +126,8 @@
 		93FC925E29CB494500BAB980 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				93FC925F29CB498200BAB980 /* FirefoxExtension.swift */,
+				93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -141,6 +149,9 @@
 			dependencies = (
 			);
 			name = Orion;
+			packageProductDependencies = (
+				93FC926429CB4D3200BAB980 /* ZIPFoundation */,
+			);
 			productName = Orion;
 			productReference = 93D6703329CB14BB005DE788 /* Orion.app */;
 			productType = "com.apple.product-type.application";
@@ -169,6 +180,9 @@
 				Base,
 			);
 			mainGroup = 93D6702A29CB14BB005DE788;
+			packageReferences = (
+				93FC926329CB4D3200BAB980 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
 			productRefGroup = 93D6703429CB14BB005DE788 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -218,6 +232,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
+				93FC926229CB4A1500BAB980 /* FirefoxExtension+Decoding.swift in Sources */,
+				93FC926029CB498200BAB980 /* FirefoxExtension.swift in Sources */,
 				93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */,
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
 				93FC925829CB46B800BAB980 /* FileManager.swift in Sources */,
@@ -430,6 +446,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		93FC926329CB4D3200BAB980 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		93FC926429CB4D3200BAB980 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93FC926329CB4D3200BAB980 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 93D6702B29CB14BB005DE788 /* Project object */;
 }
