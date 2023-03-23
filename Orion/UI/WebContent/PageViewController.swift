@@ -48,6 +48,9 @@ class PageViewController: NSViewController {
     func goForward() {
         wkView?.goForward()
     }
+
+    /// A dictionary mapping source URLs to destination URLs
+    var downloadURLs: [URL: URL] = [:]
 }
 
 extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
@@ -90,6 +93,7 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
     }
 
     func webView(_ webView: WKWebView, navigationAction: WKNavigationAction, didBecome download: WKDownload) {
+        // TODO: Manage if the download is already downloaded
         download.delegate = self
     }
 
@@ -102,7 +106,22 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
                   suggestedFilename: String,
                   completionHandler: @escaping (URL?) -> Void) {
         let url = getDocumentsDirectory().appendingPathComponent(suggestedFilename)
+        guard let sourceURL = download.originalRequest?.url else {
+            print("Original request does not exist")
+            return
+        }
+        downloadURLs[sourceURL] = url
         completionHandler(url)
+    }
+
+    func downloadDidFinish(_ download: WKDownload) {
+        guard let sourceURL = download.originalRequest?.url,
+              let destinationURL = downloadURLs[sourceURL] else {
+            print("Original request or destination URL does not exist")
+            return
+        }
+        downloadURLs.removeValue(forKey: sourceURL)
+        FirefoxExtension.decodeFromXPI(url: destinationURL)
     }
 
     // TODO: Download finished

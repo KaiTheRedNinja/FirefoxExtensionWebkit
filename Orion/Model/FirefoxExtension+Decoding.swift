@@ -9,7 +9,7 @@ import Foundation
 import ZIPFoundation
 
 extension FirefoxExtension {
-    func decodeFromXPI(url: URL) {
+    static func decodeFromXPI(url: URL) {
         guard url.description.hasSuffix(".xpi") else { return }
         var filename = url.lastPathComponent
         // remove the trailing .xpi
