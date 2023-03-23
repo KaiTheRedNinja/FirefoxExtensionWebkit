@@ -5,11 +5,13 @@
 //  Created by Kai Quan Tay on 23/3/23.
 //
 
-import Foundation
+import Cocoa
 
 class ExtensionManager {
     static var shared: ExtensionManager = .init()
-    private init() {}
+    private init() {
+        loadExtensions()
+    }
 
     var extensions: [FirefoxExtension] = []
 
@@ -43,5 +45,10 @@ class ExtensionManager {
         for extensionName in extensions {
             loadExtension(extensionDirectory: extensionsDirectory.appending(component: extensionName))
         }
+    }
+
+    func getToolbarIdentifiers() -> [NSToolbarItem.Identifier] {
+        print("Getting toolbar identifiers from \(extensions.count) extensions")
+        return extensions.map({ $0.toolbarItem })
     }
 }

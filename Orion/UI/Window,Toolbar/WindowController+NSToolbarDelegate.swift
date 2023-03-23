@@ -7,24 +7,48 @@
 
 import Cocoa
 
+let baseItems: [NSToolbarItem.Identifier] = [
+    .backForward,
+    .addressBar,
+    .plusButton,
+    .flexibleSpace
+]
+
 extension WindowController: NSToolbarDelegate {
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [
-            .backForward,
-            .addressBar,
-            .plusButton
-        ]
+        return baseItems + ExtensionManager.shared.getToolbarIdentifiers()
     }
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [
-            .backForward,
-            .addressBar,
-            .plusButton
-        ]
+        return baseItems + ExtensionManager.shared.getToolbarIdentifiers()
     }
+
     func toolbar(_ toolbar: NSToolbar,
                  itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
                  willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+        switch itemIdentifier {
+        case .backForward, .addressBar, .plusButton:
+            return browserBuiltIns(identifier: itemIdentifier)
+        default:
+            let idString = itemIdentifier.rawValue
+            let manager = ExtensionManager.shared
+            guard idString.hasPrefix("extension_") else { break }
+            // init the toolbar item
+            guard let ffExtension = manager.extensions.first(where: { $0.identifier == idString }) else {
+                print("Failed to find toolbar: \(idString)")
+                break
+            }
+
+            print("Trying to get extension thing...")
+
+            let item = NSToolbarItem(itemIdentifier: itemIdentifier)
+            let view = NSImageView(image: ffExtension.iconImage)
+            item.view = view
+            return item
+        }
+        return .init(itemIdentifier: itemIdentifier)
+    }
+
+    func browserBuiltIns(identifier itemIdentifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
         switch itemIdentifier {
         case .addressBar:
             // create the address bar
@@ -79,7 +103,7 @@ extension WindowController: NSToolbarDelegate {
             toolbarItem.view = view
             return toolbarItem
         default:
-            return .init(itemIdentifier: itemIdentifier)
+            return nil
         }
     }
 }

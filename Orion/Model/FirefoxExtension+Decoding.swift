@@ -46,6 +46,7 @@ extension FirefoxExtension {
         let ffExtension = FirefoxExtension(author: author,
                                            icons: icons,
                                            name: name,
+                                           path: manifestURL.deletingLastPathComponent(),
                                            description: description,
                                            optionsUIPage: optionsUIPage,
                                            permissions: permissions)
