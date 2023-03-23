@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93D0A2F429CC41440070E680 /* FileManager+ZIP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F329CC41440070E680 /* FileManager+ZIP.swift */; };
 		93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703629CB14BB005DE788 /* AppDelegate.swift */; };
 		93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703829CB14BB005DE788 /* PageViewController.swift */; };
 		93D6703B29CB14BC005DE788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703A29CB14BC005DE788 /* Assets.xcassets */; };
@@ -23,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		93D0A2F329CC41440070E680 /* FileManager+ZIP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+ZIP.swift"; sourceTree = "<group>"; };
 		93D6703329CB14BB005DE788 /* Orion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D6703629CB14BB005DE788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93D6703829CB14BB005DE788 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 		93FC925B29CB492100BAB980 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				93D0A2F329CC41440070E680 /* FileManager+ZIP.swift */,
 				93FC925729CB46B800BAB980 /* FileManager.swift */,
 			);
 			path = Utils;
@@ -241,7 +238,6 @@
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
 				93FC925829CB46B800BAB980 /* FileManager.swift in Sources */,
 				93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */,
-				93D0A2F429CC41440070E680 /* FileManager+ZIP.swift in Sources */,
 				93D6704629CB187D005DE788 /* WindowController.swift in Sources */,
 				93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */,
 			);

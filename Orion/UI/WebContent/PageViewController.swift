@@ -105,7 +105,7 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
                   decideDestinationUsing response: URLResponse,
                   suggestedFilename: String,
                   completionHandler: @escaping (URL?) -> Void) {
-        let url = getDocumentsDirectory().appendingPathComponent(suggestedFilename)
+        let url = FileManager.default.getDocumentsDirectory().appendingPathComponent(suggestedFilename)
         guard let sourceURL = download.originalRequest?.url else {
             print("Original request does not exist")
             return
