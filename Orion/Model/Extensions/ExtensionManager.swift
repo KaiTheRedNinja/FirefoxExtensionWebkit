@@ -40,12 +40,14 @@ class ExtensionManager {
     func loadExtensions() {
         let fileManager = FileManager.default
         let extensionsDirectory = fileManager.getDocumentsDirectory().appending(component: "extensions/")
-        guard let extensions = try? fileManager.contentsOfDirectory(atPath: extensionsDirectory.path) else {
+        guard let extensions = try? fileManager.contentsOfDirectory(at: extensionsDirectory,
+                                                                    includingPropertiesForKeys: [.isDirectoryKey])
+        else {
             print("Could not get extensions")
             return
         }
-        for extensionName in extensions {
-            loadExtension(extensionDirectory: extensionsDirectory.appending(component: extensionName))
+        for extensionURL in extensions where extensionURL.hasDirectoryPath {
+            loadExtension(extensionDirectory: extensionURL)
         }
     }
 

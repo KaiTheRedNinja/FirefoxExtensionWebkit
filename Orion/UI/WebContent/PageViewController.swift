@@ -32,12 +32,16 @@ class PageViewController: NSViewController {
         self.wkView = wkView
 
         // load contents
-        loadPage(string: "https://addons.mozilla.org/en-US/firefox/addon/top-sites-button/")
+        self.loadPage(string: "https://addons.mozilla.org/en-US/firefox/addon/top-sites-button/")
     }
 
     func loadPage(string: String) {
         guard let url = URL(string: string) else { return }
         let request = URLRequest(url: url)
+        /*
+         NOTE: triggers error:
+         This method should not be called on the main thread as it may lead to UI unresponsiveness.
+         */
         wkView?.load(request)
     }
 
@@ -58,7 +62,9 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
 
     // finish
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        mainWindow?.updateAddressBar(to: webView.url?.description ?? "")
+        guard let url = webView.url else { return }
+        mainWindow?.updateAddressBar(to: url.description)
+        TopSitesAPI.addSiteVisit(url: url)
     }
 
     // MARK: Downloads
@@ -100,12 +106,7 @@ extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
         var url = fileManager.getDocumentsDirectory().appending(component: suggestedFilename)
         if suggestedFilename.hasSuffix(".xpi") {
             url.deleteLastPathComponent()
-            url.append(component: "extensions/")
-            // ensure the extensions directory exists
-            if !fileManager.exists(file: url.description) {
-                try? fileManager.createDirectory(at: url, withIntermediateDirectories: true)
-            }
-            url.append(component: "\(suggestedFilename)")
+            url.append(component: "extensions/\(suggestedFilename)")
         }
         guard let sourceURL = download.originalRequest?.url else { return }
         downloadURLs[sourceURL] = url
