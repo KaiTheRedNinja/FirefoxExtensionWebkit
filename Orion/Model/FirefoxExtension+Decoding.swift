@@ -10,8 +10,16 @@ import ZIPFoundation
 
 extension FirefoxExtension {
     static func decodeFromXPI(url: URL) {
-        guard let unzippedFilePath = unzipXPI(url: url),
-              let contents = try? Data(contentsOf: unzippedFilePath.appending(component: "manifest.json")) else {
+        guard let unzippedFilePath = unzipXPI(url: url, deleteOnFail: true) else {
+            print("Could not unzip XPI")
+            return
+        }
+
+        decodeManifest(manifestURL: unzippedFilePath.appending(component: "manifest.json"))
+    }
+
+    static func decodeManifest(manifestURL: URL) {
+        guard let contents = try? Data(contentsOf: manifestURL) else {
             print("Could not find manifest.json")
             return
         }
@@ -50,20 +58,26 @@ extension FirefoxExtension {
         print("Successfully created firefox extension")
     }
 
-    private static func unzipXPI(url: URL) -> URL? {
+    private static func unzipXPI(url: URL,
+                                 deleteOnSuccess: Bool = true,
+                                 deleteOnFail: Bool = false) -> URL? {
         guard url.description.hasSuffix(".xpi") else { return nil }
         var filename = url.lastPathComponent
         // remove the trailing .xpi
         filename = String(filename.dropLast(4))
         let unzippedFilePath = url.deletingLastPathComponent().appending(component: filename)
-
+        let fileManager = FileManager.default
         do {
             // unzip the item, then delete the original
-            let fileManager = FileManager.default
             try fileManager.unzipItem(at: url, to: unzippedFilePath)
-            try fileManager.removeItem(at: url)
+            if deleteOnSuccess {
+                try fileManager.removeItem(at: url)
+            }
         } catch {
             print("Unzipping failed with error \(error.localizedDescription)")
+            if deleteOnFail {
+                try? fileManager.removeItem(at: url)
+            }
             return nil
         }
 
