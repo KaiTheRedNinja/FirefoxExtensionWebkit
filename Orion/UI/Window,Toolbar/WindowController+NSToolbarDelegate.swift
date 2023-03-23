@@ -41,8 +41,13 @@ extension WindowController: NSToolbarDelegate {
             print("Trying to get extension thing...")
 
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-            let view = NSImageView(image: ffExtension.iconImage)
-            item.view = view
+            let button = ExtensionToolbarButton(image: ffExtension.iconImage,
+                                                target: nil,
+                                                action: #selector(showExtensionMenu))
+            button.correspondingExtension = ffExtension
+            button.isBordered = false
+            button.bezelStyle = .circular
+            item.view = button
             return item
         }
         return .init(itemIdentifier: itemIdentifier)

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		93D0A2F629CC50340070E680 /* ExtensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F529CC50340070E680 /* ExtensionManager.swift */; };
+		93D0A2F829CC7F290070E680 /* WindowController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */; };
+		93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */; };
 		93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703629CB14BB005DE788 /* AppDelegate.swift */; };
 		93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703829CB14BB005DE788 /* PageViewController.swift */; };
 		93D6703B29CB14BC005DE788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703A29CB14BC005DE788 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		93D0A2F529CC50340070E680 /* ExtensionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionManager.swift; sourceTree = "<group>"; };
+		93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Extensions.swift"; sourceTree = "<group>"; };
+		93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionToolbarButton.swift; sourceTree = "<group>"; };
 		93D6703329CB14BB005DE788 /* Orion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D6703629CB14BB005DE788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93D6703829CB14BB005DE788 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93D0A2F929CC803A0070E680 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		93D6702A29CB14BB005DE788 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +106,7 @@
 			children = (
 				93D6704529CB187D005DE788 /* WindowController.swift */,
 				93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */,
+				93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */,
 				93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */,
 				93FC925329CB3BA500BAB980 /* AddressBarView.swift */,
 			);
@@ -121,6 +134,7 @@
 			children = (
 				93FC925A29CB490D00BAB980 /* Window,Toolbar */,
 				93FC925C29CB492800BAB980 /* WebContent */,
+				93D0A2F929CC803A0070E680 /* Extensions */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -237,11 +251,13 @@
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
 				93D0A2F629CC50340070E680 /* ExtensionManager.swift in Sources */,
 				93FC926229CB4A1500BAB980 /* FirefoxExtension+Decoding.swift in Sources */,
+				93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */,
 				93FC926029CB498200BAB980 /* FirefoxExtension.swift in Sources */,
 				93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */,
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
 				93FC925829CB46B800BAB980 /* FileManager.swift in Sources */,
 				93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */,
+				93D0A2F829CC7F290070E680 /* WindowController+Extensions.swift in Sources */,
 				93D6704629CB187D005DE788 /* WindowController.swift in Sources */,
 				93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */,
 			);
