@@ -12,6 +12,7 @@
 		93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */; };
 		93D0A30029CC83980070E680 /* ExtensionPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */; };
 		93D0A30129CC83980070E680 /* ExtensionPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */; };
+		93D0A30529CC89BC0070E680 /* TopSitesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A30429CC89BC0070E680 /* TopSitesAPI.swift */; };
 		93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703629CB14BB005DE788 /* AppDelegate.swift */; };
 		93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D6703829CB14BB005DE788 /* PageViewController.swift */; };
 		93D6703B29CB14BC005DE788 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93D6703A29CB14BC005DE788 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionToolbarButton.swift; sourceTree = "<group>"; };
 		93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPopoverViewController.swift; sourceTree = "<group>"; };
 		93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtensionPopoverViewController.xib; sourceTree = "<group>"; };
+		93D0A30429CC89BC0070E680 /* TopSitesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSitesAPI.swift; sourceTree = "<group>"; };
 		93D6703329CB14BB005DE788 /* Orion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Orion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D6703629CB14BB005DE788 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93D6703829CB14BB005DE788 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,24 @@
 				93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		93D0A30229CC89A40070E680 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				93FC925F29CB498200BAB980 /* FirefoxExtension.swift */,
+				93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */,
+				93D0A2F529CC50340070E680 /* ExtensionManager.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		93D0A30329CC89AA0070E680 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				93D0A30429CC89BC0070E680 /* TopSitesAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		93D6702A29CB14BB005DE788 = {
@@ -148,9 +168,8 @@
 		93FC925E29CB494500BAB980 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				93FC925F29CB498200BAB980 /* FirefoxExtension.swift */,
-				93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */,
-				93D0A2F529CC50340070E680 /* ExtensionManager.swift */,
+				93D0A30329CC89AA0070E680 /* API */,
+				93D0A30229CC89A40070E680 /* Extensions */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +285,7 @@
 				93FC925829CB46B800BAB980 /* FileManager.swift in Sources */,
 				93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */,
 				93D0A2F829CC7F290070E680 /* WindowController+Extensions.swift in Sources */,
+				93D0A30529CC89BC0070E680 /* TopSitesAPI.swift in Sources */,
 				93D6704629CB187D005DE788 /* WindowController.swift in Sources */,
 				93D6703729CB14BB005DE788 /* AppDelegate.swift in Sources */,
 			);
