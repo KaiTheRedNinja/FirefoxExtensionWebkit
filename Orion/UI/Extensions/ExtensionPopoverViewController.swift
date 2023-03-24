@@ -20,7 +20,11 @@ class ExtensionPopoverViewController: NSViewController {
         let wkView = WKWebView(frame: self.view.frame)
         wkView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2; rv:111.0) Gecko/20100101 Firefox/111.0"
         wkView.autoresizingMask = [.height, .width]
-        wkView.navigationDelegate = self
+
+        JSAPIFunctions.setUp(webView: wkView,
+                             uiDelegate: self,
+                             messageHandler: self)
+
         self.view = wkView
         self.wkView = wkView
     }
@@ -31,23 +35,39 @@ class ExtensionPopoverViewController: NSViewController {
 
         // TODO: Find a more elegant way to load the page other than a delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.wkView?.loadFileURL(pageURL, allowingReadAccessTo: pageURL.deletingLastPathComponent())
+            self.wkView?.loadFileURL(pageURL, allowingReadAccessTo: ffExtension.path)
+            let request = URLRequest(url: pageURL)
+            self.wkView?.load(request)
         }
     }
 }
 
-extension ExtensionPopoverViewController: WKNavigationDelegate {
+extension ExtensionPopoverViewController: WKUIDelegate, WKScriptMessageHandler {
     func webView(_ webView: WKWebView,
-                 decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
-        print("Web requested to \(navigationAction.request.description)")
-        guard let correspondengExtension else { return .cancel }
-        print("extension \(correspondengExtension.path.description)")
-        if navigationAction.request.description.hasPrefix(correspondengExtension.path.description) {
-            print("Allowing")
-            return .allow
-        } else {
-            print("Denying")
-            return .cancel
+                 runJavaScriptTextInputPanelWithPrompt prompt: String,
+                 defaultText: String?,
+                 initiatedByFrame frame: WKFrameInfo,
+                 completionHandler: @escaping (String?) -> Void) {
+
+        guard let (funcName, _) = JSAPIFunctions.serializeAPIRequest(prompt: prompt) else {
+            completionHandler("could not serialize data")
+            return
         }
+        print("Function name reeeeee")
+
+        switch funcName {
+        case "getTopSites":
+            print("Getting top sites")
+            guard let topSitesData = try? JSONEncoder().encode(TopSitesAPI.getTopSites(number: 10)),
+                  let stringValue = String(data: topSitesData, encoding: .utf8)
+            else { break }
+            completionHandler(stringValue)
+            return
+        default: break
+        }
+    }
+
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print("Got message \(message.name): \(message.body)")
     }
 }
