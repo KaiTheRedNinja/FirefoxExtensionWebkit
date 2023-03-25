@@ -14,6 +14,8 @@ class PageViewController: NSViewController {
 
     private var wkView: WKWebView?
 
+    var webViewURLObserver: NSKeyValueObservation?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,15 @@ class PageViewController: NSViewController {
 
         // load contents
         self.loadPage(string: "https://addons.mozilla.org/en-US/firefox/addon/top-sites-button/")
+
+        // watch the address
+        self.webViewURLObserver = wkView.observe(\.url) { [weak self] _, _ in
+            if let wkURL = wkView.url {
+                self?.mainWindow?.updateAddressBar(to: wkURL)
+            } else {
+                print("Could not get URL for page")
+            }
+        }
     }
 
     func loadPage(string: String) {
@@ -59,12 +70,9 @@ class PageViewController: NSViewController {
 
 extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
     // MARK: Navigation
-
-    // finish
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let url = webView.url else { return }
-        mainWindow?.updateAddressBar(to: url.description)
-        TopSitesAPI.addSiteVisit(url: url)
+        mainWindow?.updateAddressBar(to: url)
     }
 
     // MARK: Downloads

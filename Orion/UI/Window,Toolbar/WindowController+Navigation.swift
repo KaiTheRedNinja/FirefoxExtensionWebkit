@@ -20,7 +20,13 @@ extension WindowController {
         pageViewController?.loadPage(string: newValue)
     }
 
-    func updateAddressBar(to newValue: String) {
-        addressBar?.textField.stringValue = newValue
+    func updateAddressBar(to url: URL) {
+        let description = url.description
+        // dont change it to the same thing
+        guard description != addressBar?.textField.stringValue else { return }
+
+        // set the string value and top sites api
+        addressBar?.textField.stringValue = description
+        TopSitesAPI.addSiteVisit(url: url)
     }
 }

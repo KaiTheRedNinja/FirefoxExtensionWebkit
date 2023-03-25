@@ -18,7 +18,7 @@ class AddressBarView: NSView {
         self.textField = textField
         super.init(frame: frameRect)
 
-        textField.stringValue = "Test"
+        textField.stringValue = ""
         textField.placeholderString = "Web Address"
         textField.target = self
         textField.action = #selector(updateURL)
