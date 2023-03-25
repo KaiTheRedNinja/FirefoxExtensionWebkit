@@ -12,49 +12,25 @@ class PageViewController: NSViewController {
 
     weak var mainWindow: WindowController?
 
-    private var wkView: WKWebView?
-
-    var webViewURLObserver: NSKeyValueObservation?
+    private var wkView: NavigatorWebView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // load the wkView
-        let wkView = WKWebView(frame: self.view.frame)
-        /*
-         For reference: Default user agent is
-         Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
-         AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15
-        */
-        // use the firefox UA to get the firefox addon page to work
-        wkView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2; rv:111.0) Gecko/20100101 Firefox/111.0"
-        wkView.autoresizingMask = [.height, .width]
+        let wkView = NavigatorWebView(frame: self.view.frame)
         wkView.navigationDelegate = self
         self.view = wkView
         self.wkView = wkView
 
         // load contents
-        self.loadPage(string: "https://addons.mozilla.org/en-US/firefox/addon/top-sites-button/")
-
-        // watch the address
-        self.webViewURLObserver = wkView.observe(\.url) { [weak self] _, _ in
-            if let wkURL = wkView.url {
-                self?.mainWindow?.updateAddressBar(to: wkURL)
-            } else {
-                print("Could not get URL for page")
-            }
-        }
+        wkView.loadPage(string: "https://addons.mozilla.org/en-US/firefox/addon/top-sites-button/")
     }
 
-    func loadPage(string: String) {
-        guard let url = URL(string: string) else { return }
-        let request = URLRequest(url: url)
-        /*
-         NOTE: triggers error:
-         This method should not be called on the main thread as it may lead to UI unresponsiveness.
-         */
-        wkView?.load(request)
-    }
+    /// A dictionary mapping source URLs to destination URLs
+    var downloadURLs: [URL: URL] = [:]
+
+    // MARK: Public-facing functions
 
     func goBack() {
         wkView?.goBack()
@@ -64,15 +40,25 @@ class PageViewController: NSViewController {
         wkView?.goForward()
     }
 
-    /// A dictionary mapping source URLs to destination URLs
-    var downloadURLs: [URL: URL] = [:]
+    func loadPage(string: String) {
+        wkView?.loadPage(string: string)
+    }
 }
 
-extension PageViewController: WKNavigationDelegate, WKDownloadDelegate {
+extension PageViewController: WKNavigationDelegatePlus, WKDownloadDelegate {
     // MARK: Navigation
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let url = webView.url else { return }
         mainWindow?.updateAddressBar(to: url)
+    }
+
+    func webView(_ webView: WKWebView, urlChange: NSKeyValueObservedChange<URL?>) {
+        if let wkURL = webView.url {
+            print("New url: \(wkURL.description)")
+            mainWindow?.updateAddressBar(to: wkURL)
+        } else {
+            print("Could not get URL for page")
+        }
     }
 
     // MARK: Downloads
