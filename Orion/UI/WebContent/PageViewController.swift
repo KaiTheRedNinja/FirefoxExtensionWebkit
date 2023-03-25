@@ -49,13 +49,13 @@ extension PageViewController: WKNavigationDelegatePlus, WKDownloadDelegate {
     // MARK: Navigation
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         guard let url = webView.url else { return }
-        mainWindow?.updateAddressBar(to: url)
+        mainWindow?.updateAddressBar(to: url, title: wkView?.title ?? "")
     }
 
     func webView(_ webView: WKWebView, urlChange: NSKeyValueObservedChange<URL?>) {
         if let wkURL = webView.url {
             print("New url: \(wkURL.description)")
-            mainWindow?.updateAddressBar(to: wkURL)
+            mainWindow?.updateAddressBar(to: wkURL, title: wkView?.title ?? "")
         } else {
             print("Could not get URL for page")
         }

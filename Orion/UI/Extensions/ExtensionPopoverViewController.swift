@@ -58,7 +58,11 @@ extension ExtensionPopoverViewController: WKUIDelegate, WKScriptMessageHandler {
         switch funcName {
         case "getTopSites":
             print("Getting top sites")
-            guard let topSitesData = try? JSONEncoder().encode(TopSitesAPI.getTopSites(number: 10)),
+            let topSites = TopSitesAPI.getTopSites(number: 10)
+            let topSitesDict: [[String: String]] = topSites.map { url, data in
+                ["url": url.description, "title": data.title]
+            }
+            guard let topSitesData = try? JSONEncoder().encode(topSitesDict),
                   let stringValue = String(data: topSitesData, encoding: .utf8)
             else { break }
             completionHandler(stringValue)
