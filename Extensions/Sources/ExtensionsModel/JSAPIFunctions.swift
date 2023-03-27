@@ -17,12 +17,23 @@ public enum JSAPIFunctions {
     ///   - webView: The web view to set up
     ///   - uiDelegate: The `WKUIDelegate` for the web view
     ///   - messageHandler: The `WKScriptMessageHandler` for the web view
-    public static func setUp<UIDelegate: WKUIDelegate,
-                      MessageHandler: WKScriptMessageHandler>(webView: WKWebView,
-                                                              uiDelegate: UIDelegate,
-                                                              messageHandler: MessageHandler) {
+    public static func setUp<UIDelegate: WKUIDelegate, MessageHandler: WKScriptMessageHandler>(
+        webView: WKWebView,
+        for ext: FirefoxExtension,
+        uiDelegate: UIDelegate,
+        messageHandler: MessageHandler
+    ) {
         // inject JS to capture console.log output and send to iOS
-        let source = [setupString, APIFunctions].joined(separator: "\n")
+        var injectionMethods = [setupString]
+        injectionMethods.append(contentsOf: ext.permissions.compactMap { permission in
+            switch permission {
+            case "topSites": return getTopSites
+            case "storage": return getStorageLocal
+            case "activeTab": return openNewTab
+            default: return nil
+            }
+        })
+        let source = injectionMethods.joined(separator: "\n")
 
         let script = WKUserScript(source: source, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         webView.configuration.userContentController.addUserScript(script)
@@ -87,15 +98,6 @@ function queryNativeCode(funcName, data) {
 
 // MARK: Web APIs
 extension JSAPIFunctions {
-    static var APIFunctions: String {
-        [
-            getTopSites,
-            getStorageLocal,
-            openNewTab,
-            updateCurrentTab
-        ].joined(separator: "\n")
-    }
-
     static let getTopSites: String = """
 function getTopSites() {
     const topSites = eval(queryNativeCode("getTopSites", {}));

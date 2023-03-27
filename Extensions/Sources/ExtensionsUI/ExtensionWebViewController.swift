@@ -36,6 +36,7 @@ open class ExtensionWebViewController: NSViewController {
         self.wkView = wkView
 
         JSAPIFunctions.setUp(webView: wkView,
+                             for: correspondingExtension,
                              uiDelegate: self,
                              messageHandler: self)
 
