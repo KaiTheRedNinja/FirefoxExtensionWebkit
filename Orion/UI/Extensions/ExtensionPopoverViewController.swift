@@ -15,6 +15,10 @@ class ExtensionPopoverViewController: NSViewController {
     var correspondengExtension: FirefoxExtension?
 
     override func viewDidLoad() {
+        guard let correspondengExtension else {
+            fatalError("corresponding extension was not found!")
+        }
+
         super.viewDidLoad()
 
         let configuration = WKWebViewConfiguration()
@@ -32,19 +36,16 @@ class ExtensionPopoverViewController: NSViewController {
         JSAPIFunctions.setUp(webView: wkView,
                              uiDelegate: self,
                              messageHandler: self)
-    }
 
-    func linkToExtension(ffExtension: FirefoxExtension) {
-        self.correspondengExtension = ffExtension
-        let pageURLString = "firefox-extension://\(ffExtension.identifier)/\(ffExtension.popupPage)"
+        let id = correspondengExtension.identifier
+        let pagePath = correspondengExtension.popupPage
+        let pageURLString = "firefox-extension://\(id)/\(pagePath)"
         let pageURL = URL(string: pageURLString)!
 
         // TODO: Find a more elegant way to load the page other than a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            let request = URLRequest(url: pageURL)
-            print("Loading URL: \(pageURL)")
-            self.wkView?.load(request)
-        }
+        print("Loading URL: \(pageURL)")
+        let request = URLRequest(url: pageURL)
+        self.wkView?.load(request)
     }
 }
 

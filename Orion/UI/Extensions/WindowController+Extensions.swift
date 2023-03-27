@@ -24,7 +24,7 @@ extension WindowController {
             $0.identifier == ffExtensionID
         }) else { return }
 
-        content.linkToExtension(ffExtension: ffExtension)
+        content.correspondengExtension = ffExtension
 
         // show it
         popover.contentViewController = content
