@@ -55,7 +55,6 @@ extension PageViewController: WKNavigationDelegatePlus, WKDownloadDelegate {
 
     func webView(_ webView: WKWebView, urlChange: NSKeyValueObservedChange<URL?>) {
         if let wkURL = webView.url {
-            print("New url: \(wkURL.description)")
             mainWindow?.updateAddressBar(to: wkURL, title: wkView?.title ?? "")
         } else {
             print("Could not get URL for page")

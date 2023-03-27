@@ -44,8 +44,6 @@ open class ExtensionWebViewController: NSViewController {
         let pageURLString = "firefox-extension://\(id)/\(pagePath)"
         let pageURL = URL(string: pageURLString)!
 
-        // TODO: Find a more elegant way to load the page other than a delay
-        print("Loading URL: \(pageURL)")
         let request = URLRequest(url: pageURL)
         self.wkView?.load(request)
     }
@@ -53,7 +51,6 @@ open class ExtensionWebViewController: NSViewController {
 
 extension ExtensionWebViewController: WKURLSchemeHandler {
     public func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
-        print("Starting URL scheme task")
         guard let url = urlSchemeTask.request.url,
               let fileUrl = fileUrlFromUrl(url),
               let mimeType = mimeType(ofFileAtUrl: fileUrl),
@@ -73,16 +70,19 @@ extension ExtensionWebViewController: WKURLSchemeHandler {
         // the 1st item should be nil
         // the 2nd item onwards should be the path of the file
 
-        print("Evaluating componetns: \(components)")
-
-        // TODO: Evaluate the URL properly
         let otherComponents = components.dropFirst(1)
-        guard let fileURL = correspondingExtension?.path
-            .appendingPathComponent(otherComponents.joined(separator: "/")) else {
-            print("Could not get file URL")
+        guard let correspondingExtension else {
+            print("Corresponding extension does not exist")
             return nil
         }
-        print("File url returned: \(fileURL)")
+
+        // ensure that the accessed URL is within the extension
+        let fileURL = correspondingExtension.path.appendingPathComponent(otherComponents.joined(separator: "/"))
+        guard fileURL.isContained(in: correspondingExtension.path) else {
+            print("Invalid URL")
+            return nil
+        }
+
         return fileURL
     }
 

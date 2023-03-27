@@ -24,7 +24,6 @@ enum TopSitesAPI {
                 .appendingPathComponent("extensions/topSites.json")
             do {
                 try JSONEncoder().encode(newValue).write(to: filePath)
-                print("Saved to disk")
             } catch {
                 print("Could not save \(newValue): \(error.localizedDescription)")
             }
@@ -32,6 +31,9 @@ enum TopSitesAPI {
     }
 
     static func addSiteVisit(url: URL, title: String) {
+        // make sure that the URL doesn't have a ending extension
+        // this is to avoid file downloads from being counted as common sites
+        guard url.pathExtension.isEmpty else { return }
         topSites[url] = .init(visitCount: (topSites[url]?.visitCount ?? 0) + 1,
                               title: title)
     }

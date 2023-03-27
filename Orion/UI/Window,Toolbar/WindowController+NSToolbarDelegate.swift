@@ -40,8 +40,6 @@ extension WindowController: NSToolbarDelegate {
                 break
             }
 
-            print("Trying to get extension thing...")
-
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
             let button = ExtensionToolbarButton(image: ffExtension.iconImage,
                                                 target: nil,

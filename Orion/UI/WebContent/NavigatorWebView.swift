@@ -12,14 +12,8 @@ class NavigatorWebView: WKWebView {
     var webViewURLObserver: NSKeyValueObservation?
 
     override init(frame frameRect: CGRect, configuration: WKWebViewConfiguration = .init()) {
-        print("Creating web view with frame \(frameRect)")
         super.init(frame: frameRect, configuration: configuration)
 
-        /*
-         For reference: Default user agent is
-         Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
-         AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15
-         */
         // use the firefox UA to get the firefox addon page to work
         customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2; rv:111.0) Gecko/20100101 Firefox/111.0"
         autoresizingMask = [.height, .width]

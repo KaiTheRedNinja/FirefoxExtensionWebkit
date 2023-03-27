@@ -61,10 +61,11 @@ public extension FileManager {
         }
     }
 
-    /// Gets the documents directory
+    /// Gets the documents directory.
+    ///
+    /// Usually equal to `/Users/[username]/Library/Containers/com.kaithebuilder.Orion/Data/Documents/`
     func getDocumentsDirectory() -> URL {
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        print("Documents live at \(url.description)")
         return url.first!
     }
 }
