@@ -71,7 +71,6 @@
 				93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */,
 				93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */,
 				93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */,
-				93FE666429CDDB5600E2A633 /* JSAPIFunctions.swift */,
 				93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */,
 			);
 			path = Extensions;
@@ -80,6 +79,7 @@
 		93D0A30229CC89A40070E680 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				93FE666429CDDB5600E2A633 /* JSAPIFunctions.swift */,
 				93FC925F29CB498200BAB980 /* FirefoxExtension.swift */,
 				93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */,
 				93D0A2F529CC50340070E680 /* ExtensionManager.swift */,

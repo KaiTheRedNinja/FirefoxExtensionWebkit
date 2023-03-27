@@ -14,10 +14,9 @@ enum JSAPIFunctions {
                                                               uiDelegate: UIDelegate,
                                                               messageHandler: MessageHandler) {
         // inject JS to capture console.log output and send to iOS
-        let source = [JSAPIFunctions.setupString,
-                      JSAPIFunctions.getTopSites].joined(separator: "\n")
+        let source = [setupString, APIFunctions].joined(separator: "\n")
 
-        let script = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        let script = WKUserScript(source: source, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         webView.configuration.userContentController.addUserScript(script)
         // register the bridge script that listens for the output
         webView.configuration.userContentController.add(messageHandler, name: "logHandler")
@@ -44,8 +43,7 @@ enum JSAPIFunctions {
         [
             JSAPIFunctions.captureLog,
             JSAPIFunctions.defineBrowser,
-            JSAPIFunctions.queryNativeCode,
-            "console.log('doing stuff');"
+            JSAPIFunctions.queryNativeCode
         ].joined(separator: "\n")
     }
 
@@ -54,11 +52,12 @@ function captureLog(msg) {
     window.webkit.messageHandlers.logHandler.postMessage(msg);
 }
 window.console.log = captureLog;
+window.console.error = captureLog;
 """
 
     static let queryNativeCode: String = """
 function queryNativeCode(funcName, data) {
-    console.log('querying native app');
+    console.log('querying native app: ' + funcName);
     try {
         var type = "SJbridge";
         var payload = {type: type, functionName: funcName, data: data};
@@ -77,12 +76,48 @@ function queryNativeCode(funcName, data) {
 
 // MARK: Top sites API
 extension JSAPIFunctions {
+    static var APIFunctions: String {
+        [
+            getTopSites,
+            getStorageLocal,
+            openNewTab,
+            updateCurrentTab
+        ].joined(separator: "\n")
+    }
+
     static let getTopSites: String = """
 function getTopSites() {
-    return eval(queryNativeCode("getTopSites", {}))
+    const topSites = eval(queryNativeCode("getTopSites", {}));
+    const resolvingPromise = Promise.resolve(topSites);
+    console.log("Top sites promise made")
+    return resolvingPromise
 }
 
-browser.topSites = {}
+browser.topSites = {};
 browser.topSites.get = getTopSites;
+"""
+    static let getStorageLocal: String = """
+function getStorageLocal(params) {
+    // in the future, this would link to the browser to check if its a new tab
+    return Promise.resolve({"new_tab": true});
+}
+browser.storage = {};
+browser.storage.local = {};
+browser.storage.local.get = getStorageLocal;
+"""
+    static let openNewTab: String = """
+function createTab(params) {
+    console.log("Creating tab " + params.url)
+    queryNativeCode("createTab", params);
+}
+browser.tabs = {};
+browser.tabs.create = createTab;
+"""
+    static let updateCurrentTab: String = """
+function updateCurrentTab(params) {
+    console.log("Updating tabs")
+    queryNativeCode("updateCurrentTab", params)
+}
+browser.tabs.update = updateCurrentTab;
 """
 }
