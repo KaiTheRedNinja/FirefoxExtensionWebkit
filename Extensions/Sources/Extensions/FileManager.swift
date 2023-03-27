@@ -50,6 +50,7 @@ public extension FileManager {
         return FileManager.default.fileExists(atPath: path.relativePath)
     }
 
+    /// Creates a directory with a name in the documents directory
     func makeDirectory(name: String,
                        onError: (Error) -> Void = { _ in }) {
         let path = getDocumentsDirectory().appendingPathComponent(name)
@@ -61,7 +62,7 @@ public extension FileManager {
     }
 
     /// Gets the documents directory
-    public func getDocumentsDirectory() -> URL {
+    func getDocumentsDirectory() -> URL {
         let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print("Documents live at \(url.description)")
         return url.first!

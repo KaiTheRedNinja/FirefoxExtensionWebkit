@@ -7,15 +7,24 @@
 
 import Cocoa
 
+/// A structure containing information about a firefox extension
 public struct FirefoxExtension {
+    /// The author of the extension
     public let author: String
+    /// A dictionary mapping icon sizes to their paths relative to ``path``
     public let icons: [Int: String]
 
+    /// The name of the extension
     public let name: String
+    /// The path of the extension's root directory. All other paths are relative to this.
     public let path: URL
+    /// The description of the extension
     public let description: String
+    /// The path to the pop-up page displayed when the toolbar icon is clicked, relative to ``path``
     public let popupPage: String
+    /// The path to a configuration page, relative to ``path``
     public let optionsPage: String
+    /// The permissions that this extension requires
     public let permissions: [String]
 
     init(author: String,
@@ -49,9 +58,13 @@ public struct FirefoxExtension {
         self.toolbarItem = .init("extension_\(nameComponent)_\(authorComponent)")
     }
 
+    /// The toolbar item identifier for this extension
     public let toolbarItem: NSToolbarItem.Identifier
+    /// The icon image for this extension. Defaults to size 24.
     public let iconImage: NSImage
 
+    // TODO: Use a UUID or smth instead
+    /// An identifier for this extension. Based on the extension's name and author.
     public var identifier: String {
         let nameComponent = name.replacingOccurrences(of: " ", with: "-")
         let authorComponent = author.replacingOccurrences(of: " ", with: "-")

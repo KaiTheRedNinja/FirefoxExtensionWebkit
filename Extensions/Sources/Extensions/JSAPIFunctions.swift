@@ -8,7 +8,15 @@
 import Foundation
 import WebKit
 
+/// An enum that manages functions to inject certain javascript functions into a WKWebView
 public enum JSAPIFunctions {
+    /// Sets up a WKWebView with
+    /// - Two way JS-Swift communication
+    /// - The `topSites` web API
+    /// - Parameters:
+    ///   - webView: The web view to set up
+    ///   - uiDelegate: The `WKUIDelegate` for the web view
+    ///   - messageHandler: The `WKScriptMessageHandler` for the web view
     public static func setUp<UIDelegate: WKUIDelegate,
                       MessageHandler: WKScriptMessageHandler>(webView: WKWebView,
                                                               uiDelegate: UIDelegate,
@@ -23,6 +31,9 @@ public enum JSAPIFunctions {
         webView.uiDelegate = uiDelegate
     }
 
+    /// Turns a prompt message into a tuple of the function name and parameters, if any.
+    /// - Parameter prompt: The `prompt` string
+    /// - Returns: A tuple of the function name and any parameters, or nil if invalid
     public static func serializeAPIRequest(prompt: String) -> (String, Any?)? {
         if let dataFromString = prompt.data(using: .utf8, allowLossyConversion: false) {
             guard let json = try? JSONSerialization.jsonObject(with: dataFromString) as? [String: Any],
@@ -74,7 +85,7 @@ function queryNativeCode(funcName, data) {
     static let defineBrowser: String = "browser = {};"
 }
 
-// MARK: Top sites API
+// MARK: Web APIs
 extension JSAPIFunctions {
     static var APIFunctions: String {
         [
