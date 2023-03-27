@@ -7,7 +7,7 @@
 
 import Cocoa
 import WebKit
-import Extensions
+import ExtensionsModel
 
 class PageViewController: NSViewController {
 

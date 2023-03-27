@@ -8,7 +8,7 @@
 import Cocoa
 import WebKit
 import UniformTypeIdentifiers
-import Extensions
+import ExtensionsModel
 
 class ExtensionPopoverViewController: NSViewController {
     private var wkView: WKWebView?

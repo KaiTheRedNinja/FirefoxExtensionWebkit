@@ -6,7 +6,7 @@
 //
 
 import Cocoa
-import Extensions
+import ExtensionsModel
 
 extension WindowController {
     @objc func showExtensionMenu(sender: Any?) {

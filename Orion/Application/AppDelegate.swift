@@ -6,7 +6,7 @@
 //
 
 import Cocoa
-import Extensions
+import ExtensionsModel
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {

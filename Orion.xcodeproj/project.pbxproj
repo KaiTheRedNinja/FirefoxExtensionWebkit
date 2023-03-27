@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9396828F29D1647800AB4A6B /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 9396828E29D1647800AB4A6B /* Extensions */; };
+		9396829129D1715B00AB4A6B /* ExtensionsModel in Frameworks */ = {isa = PBXBuildFile; productRef = 9396829029D1715B00AB4A6B /* ExtensionsModel */; };
 		93AC4D8029CEA7BA0063EEE4 /* NavigatorWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */; };
 		93D0A2F829CC7F290070E680 /* WindowController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */; };
 		93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */; };
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9396828F29D1647800AB4A6B /* Extensions in Frameworks */,
+				9396829129D1715B00AB4A6B /* ExtensionsModel in Frameworks */,
 				93FC926529CB4D3200BAB980 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,7 +180,7 @@
 			name = Orion;
 			packageProductDependencies = (
 				93FC926429CB4D3200BAB980 /* ZIPFoundation */,
-				9396828E29D1647800AB4A6B /* Extensions */,
+				9396829029D1715B00AB4A6B /* ExtensionsModel */,
 			);
 			productName = Orion;
 			productReference = 93D6703329CB14BB005DE788 /* Orion.app */;
@@ -492,9 +492,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9396828E29D1647800AB4A6B /* Extensions */ = {
+		9396829029D1715B00AB4A6B /* ExtensionsModel */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Extensions;
+			productName = ExtensionsModel;
 		};
 		93FC926429CB4D3200BAB980 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
