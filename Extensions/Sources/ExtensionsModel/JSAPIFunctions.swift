@@ -109,8 +109,8 @@ browser.topSites.get = getTopSites;
 """
     static let getStorageLocal: String = """
 function getStorageLocal(params) {
-    // in the future, this would link to the browser to check if its a new tab
-    return Promise.resolve({"new_tab": true});
+    const isNewTab = eval(queryNativeCode("isNewTab", {}));
+    return Promise.resolve({"new_tab": isNewTab});
 }
 browser.storage = {};
 browser.storage.local = {};

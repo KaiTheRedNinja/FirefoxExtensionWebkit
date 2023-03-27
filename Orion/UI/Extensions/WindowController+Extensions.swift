@@ -45,7 +45,8 @@ extension WindowController: ExtensionWebViewDataSource {
     }
 
     func isNewTab() -> Bool {
-        false
+        print("Is new tab queried")
+        return false
     }
 
     func createTab(url: URL) {

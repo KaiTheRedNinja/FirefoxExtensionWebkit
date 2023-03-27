@@ -116,16 +116,20 @@ extension ExtensionWebViewController: WKUIDelegate, WKScriptMessageHandler {
             else { break }
             completionHandler(stringValue)
             return
-        case "createTab", "updateTab":
+        case "createTab", "updateCurrentTab":
             guard let params = paramData as? [String: String],
                   let urlString = params["url"],
                   let url = URL(string: urlString)
             else { break }
             if funcName == "createTab" {
                 dataSource.createTab(url: url)
-            } else if funcName == "updateTab" {
+            } else if funcName == "updateCurrentTab" {
                 dataSource.updateTab(url: url)
             }
+        case "isNewTab":
+            // new_tab is the opposite of isNewTab
+            completionHandler(String(!dataSource.isNewTab()))
+            return
         default: break
         }
 
