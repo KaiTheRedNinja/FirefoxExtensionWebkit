@@ -11,7 +11,6 @@
 		9396829129D1715B00AB4A6B /* ExtensionsModel in Frameworks */ = {isa = PBXBuildFile; productRef = 9396829029D1715B00AB4A6B /* ExtensionsModel */; };
 		93AC4D8029CEA7BA0063EEE4 /* NavigatorWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */; };
 		93D0A2F829CC7F290070E680 /* WindowController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */; };
-		93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */; };
 		93D0A30029CC83980070E680 /* ExtensionPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */; };
 		93D0A30129CC83980070E680 /* ExtensionPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */; };
 		93D0A30529CC89BC0070E680 /* TopSitesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A30429CC89BC0070E680 /* TopSitesAPI.swift */; };
@@ -30,7 +29,6 @@
 		9396828C29D1641D00AB4A6B /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Extensions; sourceTree = "<group>"; };
 		93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorWebView.swift; sourceTree = "<group>"; };
 		93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Extensions.swift"; sourceTree = "<group>"; };
-		93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionToolbarButton.swift; sourceTree = "<group>"; };
 		93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPopoverViewController.swift; sourceTree = "<group>"; };
 		93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtensionPopoverViewController.xib; sourceTree = "<group>"; };
 		93D0A30429CC89BC0070E680 /* TopSitesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSitesAPI.swift; sourceTree = "<group>"; };
@@ -70,7 +68,6 @@
 		93D0A2F929CC803A0070E680 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */,
 				93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */,
 				93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */,
 				93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */,
@@ -266,7 +263,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
-				93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */,
 				93AC4D8029CEA7BA0063EEE4 /* NavigatorWebView.swift in Sources */,
 				93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */,
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,

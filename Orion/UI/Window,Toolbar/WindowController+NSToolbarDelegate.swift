@@ -7,6 +7,7 @@
 
 import Cocoa
 import ExtensionsModel
+import ExtensionsUI
 
 let baseItems: [NSToolbarItem.Identifier] = [
     .backForward,

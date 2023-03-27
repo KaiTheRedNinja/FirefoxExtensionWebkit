@@ -8,6 +8,7 @@
 import Cocoa
 import Combine
 import ExtensionsModel
+import ExtensionsUI
 
 class WindowController: NSWindowController {
     var pageViewController: PageViewController? {

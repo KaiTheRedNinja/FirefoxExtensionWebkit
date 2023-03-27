@@ -8,6 +8,6 @@
 import Cocoa
 import ExtensionsModel
 
-class ExtensionToolbarButton: NSButton {
-    var correspondingExtension: FirefoxExtension?
+public class ExtensionToolbarButton: NSButton {
+    public var correspondingExtension: FirefoxExtension?
 }
