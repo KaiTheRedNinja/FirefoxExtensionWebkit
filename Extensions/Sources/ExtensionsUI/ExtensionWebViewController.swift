@@ -111,13 +111,7 @@ extension ExtensionWebViewController: WKUIDelegate, WKScriptMessageHandler {
         switch funcName {
         case "getTopSites":
             let topSites = dataSource.getTopSites(number: 10)
-            let data = topSites.map { item in
-                [
-                    "url": item.0.description,
-                    "title": item.1.title
-                ]
-            }
-            guard let topSitesData = try? JSONEncoder().encode(data),
+            guard let topSitesData = try? JSONEncoder().encode(topSites),
                   let stringValue = String(data: topSitesData, encoding: .utf8)
             else { break }
             completionHandler(stringValue)

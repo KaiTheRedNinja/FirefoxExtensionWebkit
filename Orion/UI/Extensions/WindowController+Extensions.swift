@@ -34,7 +34,25 @@ extension WindowController: ExtensionWebViewDataSource {
         popover.show(relativeTo: .zero, of: sender, preferredEdge: .maxY)
     }
 
-    func getTopSites(number: Int) -> [(URL, ExtensionsUI.SiteData)] {
-        TopSitesAPI.getTopSites(number: number)
+    func getTopSites(number: Int) -> [[String: String]] {
+        let topSites = TopSitesAPI.getTopSites(number: number)
+        return topSites.map { item in
+            [
+                "url": item.0.description,
+                "title": item.1.title
+            ]
+        }
+    }
+
+    func isNewTab() -> Bool {
+        false
+    }
+
+    func createTab(url: URL) {
+        print("Creating tab with url: \(url)")
+    }
+
+    func updateTab(url: URL) {
+        print("Updating tab to url: \(url)")
     }
 }
