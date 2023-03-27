@@ -17,7 +17,7 @@ enum TopSitesAPI {
         get {
             do {
                 let data = try Data(contentsOf: FileManager.default.getDocumentsDirectory()
-                    .appending(component: "extensions/topSites.json"))
+                    .appendingPathComponent("extensions/topSites.json"))
                 return try JSONDecoder().decode([URL: SiteData].self, from: data)
             } catch {
                 return [:]
@@ -25,7 +25,7 @@ enum TopSitesAPI {
         }
         set {
             let filePath = FileManager.default.getDocumentsDirectory()
-                .appending(component: "extensions/topSites.json")
+                .appendingPathComponent("extensions/topSites.json")
             do {
                 try JSONEncoder().encode(newValue).write(to: filePath)
                 print("Saved to disk")

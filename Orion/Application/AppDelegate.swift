@@ -6,13 +6,14 @@
 //
 
 import Cocoa
+import Extensions
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let fileManager = FileManager.default
-        let url = fileManager.getDocumentsDirectory().appending(component: "extensions/")
+        let url = fileManager.getDocumentsDirectory().appendingPathComponent("extensions/")
         // ensure the extensions directory exists
         if !fileManager.exists(file: url.description) {
             try? fileManager.createDirectory(at: url, withIntermediateDirectories: true)

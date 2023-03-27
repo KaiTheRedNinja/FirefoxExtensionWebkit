@@ -7,6 +7,7 @@
 
 import Cocoa
 import WebKit
+import Extensions
 
 class PageViewController: NSViewController {
 
@@ -97,7 +98,7 @@ extension PageViewController: WKNavigationDelegatePlus, WKDownloadDelegate {
                   suggestedFilename: String,
                   completionHandler: @escaping (URL?) -> Void) {
         let fileManager = FileManager.default
-        var url = fileManager.getDocumentsDirectory().appending(component: suggestedFilename)
+        var url = fileManager.getDocumentsDirectory().appendingPathComponent(suggestedFilename)
         if suggestedFilename.hasSuffix(".xpi") {
             url.deleteLastPathComponent()
             url.append(component: "extensions/\(suggestedFilename)")

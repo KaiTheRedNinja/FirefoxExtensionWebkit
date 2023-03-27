@@ -8,6 +8,7 @@
 import Cocoa
 import WebKit
 import UniformTypeIdentifiers
+import Extensions
 
 class ExtensionPopoverViewController: NSViewController {
     private var wkView: WKWebView?
@@ -76,7 +77,7 @@ extension ExtensionPopoverViewController: WKURLSchemeHandler {
         // TODO: Evaluate the URL properly
         let otherComponents = components.dropFirst(1)
         guard let fileURL = correspondengExtension?.path
-                    .appending(component: otherComponents.joined(separator: "/")) else {
+                    .appendingPathComponent(otherComponents.joined(separator: "/")) else {
             print("Could not get file URL")
             return nil
         }

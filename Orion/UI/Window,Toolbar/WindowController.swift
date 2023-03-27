@@ -7,6 +7,7 @@
 
 import Cocoa
 import Combine
+import Extensions
 
 class WindowController: NSWindowController {
     var pageViewController: PageViewController? {

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9396828F29D1647800AB4A6B /* Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = 9396828E29D1647800AB4A6B /* Extensions */; };
 		93AC4D8029CEA7BA0063EEE4 /* NavigatorWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */; };
-		93D0A2F629CC50340070E680 /* ExtensionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F529CC50340070E680 /* ExtensionManager.swift */; };
 		93D0A2F829CC7F290070E680 /* WindowController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */; };
 		93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */; };
 		93D0A30029CC83980070E680 /* ExtensionPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */; };
@@ -22,16 +22,12 @@
 		93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */; };
 		93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925329CB3BA500BAB980 /* AddressBarView.swift */; };
 		93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */; };
-		93FC925829CB46B800BAB980 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925729CB46B800BAB980 /* FileManager.swift */; };
-		93FC926029CB498200BAB980 /* FirefoxExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925F29CB498200BAB980 /* FirefoxExtension.swift */; };
-		93FC926229CB4A1500BAB980 /* FirefoxExtension+Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */; };
 		93FC926529CB4D3200BAB980 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 93FC926429CB4D3200BAB980 /* ZIPFoundation */; };
-		93FE666529CDDB5600E2A633 /* JSAPIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FE666429CDDB5600E2A633 /* JSAPIFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9396828C29D1641D00AB4A6B /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Extensions; path = ../../../tests/Extensions; sourceTree = "<group>"; };
 		93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorWebView.swift; sourceTree = "<group>"; };
-		93D0A2F529CC50340070E680 /* ExtensionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionManager.swift; sourceTree = "<group>"; };
 		93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Extensions.swift"; sourceTree = "<group>"; };
 		93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionToolbarButton.swift; sourceTree = "<group>"; };
 		93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionPopoverViewController.swift; sourceTree = "<group>"; };
@@ -47,10 +43,6 @@
 		93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+NSToolbarDelegate.swift"; sourceTree = "<group>"; };
 		93FC925329CB3BA500BAB980 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Navigation.swift"; sourceTree = "<group>"; };
-		93FC925729CB46B800BAB980 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		93FC925F29CB498200BAB980 /* FirefoxExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirefoxExtension.swift; sourceTree = "<group>"; };
-		93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FirefoxExtension+Decoding.swift"; sourceTree = "<group>"; };
-		93FE666429CDDB5600E2A633 /* JSAPIFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSAPIFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9396828F29D1647800AB4A6B /* Extensions in Frameworks */,
 				93FC926529CB4D3200BAB980 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +58,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9396828D29D1647800AB4A6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		93D0A2F929CC803A0070E680 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,17 +72,6 @@
 				93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */,
 				93D0A2FE29CC83980070E680 /* ExtensionPopoverViewController.swift */,
 				93D0A2FF29CC83980070E680 /* ExtensionPopoverViewController.xib */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		93D0A30229CC89A40070E680 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				93FE666429CDDB5600E2A633 /* JSAPIFunctions.swift */,
-				93FC925F29CB498200BAB980 /* FirefoxExtension.swift */,
-				93FC926129CB4A1500BAB980 /* FirefoxExtension+Decoding.swift */,
-				93D0A2F529CC50340070E680 /* ExtensionManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -98,8 +87,10 @@
 		93D6702A29CB14BB005DE788 = {
 			isa = PBXGroup;
 			children = (
+				9396828C29D1641D00AB4A6B /* Extensions */,
 				93D6703529CB14BB005DE788 /* Orion */,
 				93D6703429CB14BB005DE788 /* Products */,
+				9396828D29D1647800AB4A6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,7 +105,6 @@
 		93D6703529CB14BB005DE788 /* Orion */ = {
 			isa = PBXGroup;
 			children = (
-				93FC925B29CB492100BAB980 /* Utils */,
 				93FC925929CB48F900BAB980 /* Application */,
 				93FC925D29CB493700BAB980 /* UI */,
 				93FC925E29CB494500BAB980 /* Model */,
@@ -144,14 +134,6 @@
 			path = "Window,Toolbar";
 			sourceTree = "<group>";
 		};
-		93FC925B29CB492100BAB980 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				93FC925729CB46B800BAB980 /* FileManager.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		93FC925C29CB492800BAB980 /* WebContent */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				93D0A30329CC89AA0070E680 /* API */,
-				93D0A30229CC89A40070E680 /* Extensions */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,6 +180,7 @@
 			name = Orion;
 			packageProductDependencies = (
 				93FC926429CB4D3200BAB980 /* ZIPFoundation */,
+				9396828E29D1647800AB4A6B /* Extensions */,
 			);
 			productName = Orion;
 			productReference = 93D6703329CB14BB005DE788 /* Orion.app */;
@@ -281,16 +263,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
-				93D0A2F629CC50340070E680 /* ExtensionManager.swift in Sources */,
-				93FC926229CB4A1500BAB980 /* FirefoxExtension+Decoding.swift in Sources */,
 				93D0A2FB29CC80550070E680 /* ExtensionToolbarButton.swift in Sources */,
-				93FC926029CB498200BAB980 /* FirefoxExtension.swift in Sources */,
 				93AC4D8029CEA7BA0063EEE4 /* NavigatorWebView.swift in Sources */,
 				93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */,
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
-				93FE666529CDDB5600E2A633 /* JSAPIFunctions.swift in Sources */,
 				93D0A30029CC83980070E680 /* ExtensionPopoverViewController.swift in Sources */,
-				93FC925829CB46B800BAB980 /* FileManager.swift in Sources */,
 				93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */,
 				93D0A2F829CC7F290070E680 /* WindowController+Extensions.swift in Sources */,
 				93D0A30529CC89BC0070E680 /* TopSitesAPI.swift in Sources */,
@@ -515,6 +492,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9396828E29D1647800AB4A6B /* Extensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Extensions;
+		};
 		93FC926429CB4D3200BAB980 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 93FC926329CB4D3200BAB980 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;

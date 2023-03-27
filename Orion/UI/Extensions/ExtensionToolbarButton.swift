@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Extensions
 
 class ExtensionToolbarButton: NSButton {
     var correspondingExtension: FirefoxExtension?
