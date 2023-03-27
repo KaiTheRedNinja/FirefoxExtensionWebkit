@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9396828C29D1641D00AB4A6B /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Extensions; path = ../../../tests/Extensions; sourceTree = "<group>"; };
+		9396828C29D1641D00AB4A6B /* Extensions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Extensions; sourceTree = "<group>"; };
 		93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorWebView.swift; sourceTree = "<group>"; };
 		93D0A2F729CC7F290070E680 /* WindowController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Extensions.swift"; sourceTree = "<group>"; };
 		93D0A2FA29CC80550070E680 /* ExtensionToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionToolbarButton.swift; sourceTree = "<group>"; };
