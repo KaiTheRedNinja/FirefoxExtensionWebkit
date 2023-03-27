@@ -103,7 +103,7 @@ extension ExtensionWebViewController: WKUIDelegate, WKScriptMessageHandler {
                         initiatedByFrame frame: WKFrameInfo,
                         completionHandler: @escaping (String?) -> Void) {
 
-        guard let (funcName, _) = JSAPIFunctions.serializeAPIRequest(prompt: prompt) else {
+        guard let (funcName, paramData) = JSAPIFunctions.serializeAPIRequest(prompt: prompt) else {
             completionHandler("could not serialize data")
             return
         }
@@ -116,16 +116,20 @@ extension ExtensionWebViewController: WKUIDelegate, WKScriptMessageHandler {
             else { break }
             completionHandler(stringValue)
             return
-        case "createTab":
-            print("[SWIFT] Creating tab!")
-            // create the tab
-            completionHandler(nil)
-        case "updateTab":
-            print("[SWIFT] Updating tab!")
-            // update the tab
-            completionHandler(nil)
+        case "createTab", "updateTab":
+            guard let params = paramData as? [String: String],
+                  let urlString = params["url"],
+                  let url = URL(string: urlString)
+            else { break }
+            if funcName == "createTab" {
+                dataSource.createTab(url: url)
+            } else if funcName == "updateTab" {
+                dataSource.updateTab(url: url)
+            }
         default: break
         }
+
+        completionHandler(nil)
     }
 
     public func userContentController(_ userContentController: WKUserContentController,
