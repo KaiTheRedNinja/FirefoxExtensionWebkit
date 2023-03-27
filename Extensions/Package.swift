@@ -12,7 +12,10 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "ExtensionsModel",
-            targets: ["ExtensionsModel"])
+            targets: ["ExtensionsModel"]),
+        .library(
+            name: "ExtensionsUI",
+            targets: ["ExtensionsUI"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,6 +28,9 @@ let package = Package(
         .target(
             name: "ExtensionsModel",
             dependencies: ["ZIPFoundation"]),
+        .target(
+            name: "ExtensionsUI",
+            dependencies: ["ExtensionsModel"]),
         .testTarget(
             name: "ExtensionsTests",
             dependencies: ["ExtensionsModel"])

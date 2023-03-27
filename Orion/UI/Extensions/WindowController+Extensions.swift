@@ -7,8 +7,9 @@
 
 import Cocoa
 import ExtensionsModel
+import ExtensionsUI
 
-extension WindowController {
+extension WindowController: ExtensionWebViewDataSource {
     @objc func showExtensionMenu(sender: Any?) {
         guard let sender = sender as? ExtensionToolbarButton,
               let ffExtensionID = sender.correspondingExtension?.identifier
@@ -21,14 +22,19 @@ extension WindowController {
 
         // manage its contents
         let content = ExtensionPopoverViewController()
+        content.dataSource = self
         guard let ffExtension = ExtensionManager.shared.extensions.first(where: {
             $0.identifier == ffExtensionID
         }) else { return }
 
-        content.correspondengExtension = ffExtension
+        content.correspondingExtension = ffExtension
 
         // show it
         popover.contentViewController = content
         popover.show(relativeTo: .zero, of: sender, preferredEdge: .maxY)
+    }
+
+    func getTopSites(number: Int) -> [(URL, ExtensionsUI.SiteData)] {
+        TopSitesAPI.getTopSites(number: number)
     }
 }

@@ -6,13 +6,9 @@
 //
 
 import Foundation
+import ExtensionsUI
 
 enum TopSitesAPI {
-    struct SiteData: Codable {
-        var visitCount: Int
-        var title: String
-    }
-
     private static var topSites: [URL: SiteData] {
         get {
             do {
