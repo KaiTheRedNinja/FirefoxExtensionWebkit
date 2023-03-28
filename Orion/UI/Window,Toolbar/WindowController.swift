@@ -21,6 +21,7 @@ class WindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        window?.minSize = .init(width: 630, height: 400)
 
         // add the toolbar
         let toolbar = NSToolbar()
