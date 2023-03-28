@@ -23,6 +23,8 @@
 		93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925329CB3BA500BAB980 /* AddressBarView.swift */; };
 		93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */; };
 		93FC926529CB4D3200BAB980 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 93FC926429CB4D3200BAB980 /* ZIPFoundation */; };
+		93FD519A29D31CBF00E365F3 /* NavigatorWebView+NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD519929D31CBF00E365F3 /* NavigatorWebView+NavigationDelegate.swift */; };
+		93FD519C29D31D0A00E365F3 /* NavigatorWebView+WKDownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FD519B29D31D0A00E365F3 /* NavigatorWebView+WKDownloadDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		93FC925029CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+NSToolbarDelegate.swift"; sourceTree = "<group>"; };
 		93FC925329CB3BA500BAB980 /* AddressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBarView.swift; sourceTree = "<group>"; };
 		93FC925529CB42B000BAB980 /* WindowController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowController+Navigation.swift"; sourceTree = "<group>"; };
+		93FD519929D31CBF00E365F3 /* NavigatorWebView+NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigatorWebView+NavigationDelegate.swift"; sourceTree = "<group>"; };
+		93FD519B29D31D0A00E365F3 /* NavigatorWebView+WKDownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigatorWebView+WKDownloadDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				93D6703829CB14BB005DE788 /* PageViewController.swift */,
-				93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */,
+				93FD519829D31CA600E365F3 /* NavigatorWebView */,
 			);
 			path = WebContent;
 			sourceTree = "<group>";
@@ -158,6 +162,16 @@
 				93D0A30329CC89AA0070E680 /* API */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		93FD519829D31CA600E365F3 /* NavigatorWebView */ = {
+			isa = PBXGroup;
+			children = (
+				93AC4D7F29CEA7BA0063EEE4 /* NavigatorWebView.swift */,
+				93FD519929D31CBF00E365F3 /* NavigatorWebView+NavigationDelegate.swift */,
+				93FD519B29D31D0A00E365F3 /* NavigatorWebView+WKDownloadDelegate.swift */,
+			);
+			path = NavigatorWebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93FD519C29D31D0A00E365F3 /* NavigatorWebView+WKDownloadDelegate.swift in Sources */,
 				93FC925429CB3BA500BAB980 /* AddressBarView.swift in Sources */,
 				93AC4D8029CEA7BA0063EEE4 /* NavigatorWebView.swift in Sources */,
 				93D6703929CB14BB005DE788 /* PageViewController.swift in Sources */,
+				93FD519A29D31CBF00E365F3 /* NavigatorWebView+NavigationDelegate.swift in Sources */,
 				93FC925129CB3A8A00BAB980 /* WindowController+NSToolbarDelegate.swift in Sources */,
 				93D0A30029CC83980070E680 /* ExtensionPopoverViewController.swift in Sources */,
 				93FC925629CB42B000BAB980 /* WindowController+Navigation.swift in Sources */,
