@@ -54,12 +54,11 @@ public enum JSAPIFunctions {
 
     /// Determines the javascript needed to inject the web APIs for a given firefox extension
     private static func jsToInject(for ext: FirefoxExtension) -> String {
-        var injectionMethods = [setupString]
+        var injectionMethods = [setupString, createUpdateTab]
         injectionMethods.append(contentsOf: ext.permissions.compactMap { permission in
             switch permission {
             case "topSites": return getTopSites
             case "storage": return getStorageLocal
-            case "activeTab": return createUpdateTab
             default: return nil
             }
         })

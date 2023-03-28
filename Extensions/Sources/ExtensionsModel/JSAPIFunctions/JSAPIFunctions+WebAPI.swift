@@ -35,7 +35,7 @@ browser.storage.local.get = getStorageLocal;
 """
 
     /// Injects `browser.tabs.create` and `browser.tabs.update`
-    /// Permission required: `activeTab`
+    /// No permissions required
     static var createUpdateTab: String {
         [
             JSAPIFunctions.openNewTab,
