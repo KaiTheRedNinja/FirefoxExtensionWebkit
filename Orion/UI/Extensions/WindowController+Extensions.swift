@@ -45,8 +45,9 @@ extension WindowController: ExtensionWebViewDataSource {
     }
 
     func isNewTab() -> Bool {
-        print("Is new tab queried")
-        return false
+        // if the current tab's URL is "about:blank" or nil, it is a newtab.
+        let currentURL = pageViewController?.currentURL()?.description
+        return currentURL == nil || currentURL == "about:blank"
     }
 
     func createTab(url: URL) {

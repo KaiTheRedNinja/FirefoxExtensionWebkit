@@ -72,7 +72,7 @@ extension WindowController: NSToolbarDelegate {
             let button = NSButton(image: .init(systemSymbolName: "plus",
                                                accessibilityDescription: nil)!,
                                   target: nil,
-                                  action: nil)
+                                  action: #selector(newTab))
             button.isBordered = false
             button.bezelStyle = .regularSquare
             item.view = button

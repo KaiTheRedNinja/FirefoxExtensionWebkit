@@ -42,4 +42,8 @@ class PageViewController: NSViewController {
     func loadPage(string: String) {
         wkView?.loadPage(string: string)
     }
+
+    func currentURL() -> URL? {
+        wkView?.url
+    }
 }

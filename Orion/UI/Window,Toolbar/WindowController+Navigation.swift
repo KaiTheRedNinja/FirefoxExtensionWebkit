@@ -16,6 +16,10 @@ extension WindowController {
         pageViewController?.goForward()
     }
 
+    @objc func newTab() {
+        pageViewController?.loadPage(string: "about:blank")
+    }
+
     func changePageURL(to newValue: String) {
         pageViewController?.loadPage(string: newValue)
     }
