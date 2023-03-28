@@ -21,8 +21,17 @@ extension NavigatorWebView: WKNavigationDelegatePlus {
             print("Could not get URL for page")
         }
     }
+
+    func webView(_ webView: WKWebView, titleChange: NSKeyValueObservedChange<String?>) {
+        if let wkTitle = webView.title, let wkURL = webView.url {
+            mainWindow?.updateTabTitle(of: wkURL, to: wkTitle)
+        } else {
+            print("Could not get title or URL")
+        }
+    }
 }
 
 protocol WKNavigationDelegatePlus: WKNavigationDelegate {
     func webView(_ webView: WKWebView, urlChange: NSKeyValueObservedChange<URL?>)
+    func webView(_ webView: WKWebView, titleChange: NSKeyValueObservedChange<String?>)
 }

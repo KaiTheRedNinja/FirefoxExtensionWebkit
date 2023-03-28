@@ -47,6 +47,12 @@ enum TopSitesAPI {
                               title: title)
     }
 
+    static func updateSiteTitle(url: URL, title newTitle: String) {
+        guard var siteData = topSites[url] else { return }
+        siteData.title = newTitle
+        topSites[url] = siteData
+    }
+
     static func getTopSites(number: Int) -> [(URL, SiteData)] {
         let topSites = self.topSites
         var topInts = [(key: URL, value: SiteData)]()

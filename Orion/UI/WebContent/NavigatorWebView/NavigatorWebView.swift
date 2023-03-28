@@ -12,6 +12,7 @@ class NavigatorWebView: WKWebView {
     var mainWindow: WindowController?
 
     var webViewURLObserver: NSKeyValueObservation?
+    var webViewTitleObserver: NSKeyValueObservation?
 
     /// A dictionary mapping source URLs to destination URLs
     var downloadURLs: [URL: URL] = [:]
@@ -24,10 +25,14 @@ class NavigatorWebView: WKWebView {
         autoresizingMask = [.height, .width]
         navigationDelegate = self
 
-        // watch the address
+        // watch the address and title
         self.webViewURLObserver = observe(\.url) { [weak self] webView, change in
             guard let navDelegate = self?.navigationDelegate as? WKNavigationDelegatePlus else { return }
             navDelegate.webView(webView, urlChange: change)
+        }
+        self.webViewTitleObserver = observe(\.title) { [weak self] webView, change in
+            guard let navDelegate = self?.navigationDelegate as? WKNavigationDelegatePlus else { return }
+            navDelegate.webView(webView, titleChange: change)
         }
     }
 

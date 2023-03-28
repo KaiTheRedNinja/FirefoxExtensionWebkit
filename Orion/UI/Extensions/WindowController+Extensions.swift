@@ -51,9 +51,11 @@ extension WindowController: ExtensionWebViewDataSource {
 
     func createTab(url: URL) {
         print("Creating tab with url: \(url)")
+        changePageURL(to: url.description)
     }
 
     func updateTab(url: URL) {
         print("Updating tab to url: \(url)")
+        changePageURL(to: url.description)
     }
 }

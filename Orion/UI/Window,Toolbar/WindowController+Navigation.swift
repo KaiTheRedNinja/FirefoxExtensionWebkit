@@ -30,4 +30,10 @@ extension WindowController {
         addressBar?.textField.stringValue = description
         TopSitesAPI.addSiteVisit(url: url, title: titleToUse)
     }
+
+    func updateTabTitle(of url: URL, to title: String) {
+        // save the title to the top sites API
+        // if there was a tab bar, it would be updated here
+        TopSitesAPI.updateSiteTitle(url: url, title: title)
+    }
 }
