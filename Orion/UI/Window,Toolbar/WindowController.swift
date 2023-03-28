@@ -26,7 +26,7 @@ class WindowController: NSWindowController {
         // add the toolbar
         let toolbar = NSToolbar()
         toolbar.delegate = self
-        toolbar.centeredItemIdentifiers = [.addressBar]
+        toolbar.centeredItemIdentifier = .addressBar
         window?.toolbar = toolbar
         window?.titleVisibility = .hidden
 

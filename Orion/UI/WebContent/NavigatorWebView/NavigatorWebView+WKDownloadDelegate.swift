@@ -48,7 +48,7 @@ extension NavigatorWebView: WKDownloadDelegate {
         var url = fileManager.getDocumentsDirectory().appendingPathComponent(suggestedFilename)
         if suggestedFilename.hasSuffix(".xpi") {
             url.deleteLastPathComponent()
-            url.append(component: "extensions/\(suggestedFilename)")
+            url.appendPathComponent("extensions/\(suggestedFilename)")
         }
         guard let sourceURL = download.originalRequest?.url else { return }
         downloadURLs[sourceURL] = url
