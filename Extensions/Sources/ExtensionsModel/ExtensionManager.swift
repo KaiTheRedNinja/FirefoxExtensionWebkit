@@ -40,7 +40,6 @@ public class ExtensionManager {
             return
         }
 
-        // TODO: do smth with the extension
         extensions.append(ffExtension)
     }
 
@@ -62,7 +61,6 @@ public class ExtensionManager {
     /// Gets the toolbar identifiers representing the extensions
     /// - Returns: An array of toolbar identifiers
     public func getToolbarIdentifiers() -> [NSToolbarItem.Identifier] {
-        print("Getting toolbar identifiers from \(extensions.count) extensions")
         return extensions.map({ $0.toolbarItem })
     }
 }

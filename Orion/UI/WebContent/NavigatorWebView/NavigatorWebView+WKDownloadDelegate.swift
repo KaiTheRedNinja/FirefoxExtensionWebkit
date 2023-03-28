@@ -32,7 +32,6 @@ extension NavigatorWebView: WKDownloadDelegate {
     }
 
     func webView(_ webView: WKWebView, navigationAction: WKNavigationAction, didBecome download: WKDownload) {
-        // TODO: Manage if the download is already downloaded
         download.delegate = self
     }
 

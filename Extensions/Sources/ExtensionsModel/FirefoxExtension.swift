@@ -52,10 +52,9 @@ public struct FirefoxExtension {
             self.iconImage = .init(systemSymbolName: "questionmark.circle", accessibilityDescription: nil)!
         }
 
-        let nameComponent = name.replacingOccurrences(of: " ", with: "-")
-        let authorComponent = author.replacingOccurrences(of: " ", with: "-")
-
-        self.toolbarItem = .init("extension_\(nameComponent)_\(authorComponent)")
+        let identifier = "extension_" + UUID().uuidString
+        self.identifier = identifier
+        self.toolbarItem = .init(identifier)
     }
 
     /// The toolbar item identifier for this extension
@@ -63,12 +62,6 @@ public struct FirefoxExtension {
     /// The icon image for this extension. Defaults to size 24.
     public let iconImage: NSImage
 
-    // TODO: Use a UUID or smth instead
-    /// An identifier for this extension. Based on the extension's name and author.
-    public var identifier: String {
-        let nameComponent = name.replacingOccurrences(of: " ", with: "-")
-        let authorComponent = author.replacingOccurrences(of: " ", with: "-")
-
-        return "extension_\(nameComponent)_\(authorComponent)"
-    }
+    /// An identifier for this extension. In the format `extension_[UUID String]`
+    public let identifier: String
 }
