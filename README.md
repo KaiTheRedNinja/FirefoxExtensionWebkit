@@ -32,6 +32,10 @@ to make sure all navigated URLs are served for topSites API.
 
 ## Implementation (Tasks 1-5)
 
+The application uses its documents folder to store the extension data.
+- `extensions` directory: `/Users/[username]/Library/Containers/com.kaithebuilder.Orion/Data/Documents/extensions/`
+- `topSites.json`: `/Users/kaitay/Library/Containers/com.kaithebuilder.Orion/Data/Documents/extensions/topSites.json`
+
 ### Task 1
 WebKit is located at WebKit.framework, prebuilt build 262215 from MARCH 28, 2023 AT 09:07 PM GMT+8 from 
 https://webkit.org/build-archives/#mac-ventura-x86_64%20arm64
@@ -40,8 +44,8 @@ https://webkit.org/build-archives/#mac-ventura-x86_64%20arm64
 The browser detects changes in the URL (see `Task 5` below) and saves them to a json in the application's Documents directory.
 
 The TopSites JavaScript API is implemented in the `/Extensions/Sources/ExtensionsModel/JSAPIFunctions` directory.
-The JavaScript API is injected into the extension popup web view (details below in the challenges section), so when `browser.topSites.get`
-is called, an array containing the top sites is returned. 
+To inject the javascript API, the `JSAPIFunctions` object takes in a WebKit view and runs a `WKUserScript`. (details below in 
+the challenges section). When `browser.topSites.get` is called, an array containing the top sites is returned. 
 
 ### Task 3: 
 Basic parsing is located at `/Extensions/Sources/ExtensionsModel/FirefoxExtension+Decoding.swift`. To parse, it:
@@ -57,8 +61,8 @@ The download process is:
 3. When the download is complete, ask the ExtensionManager to decode the XPI (see `Task 3` above)
 4. After the firefox extension is expanded, a Combine publisher event is sent and the new extension is added to the toolbar
 
-To render the popup, I use a custom URL scheme (rationale below in the challenges section) that loads the popup.html (or whatever the
-popup file is, it isn't hard coded) along with other needed resources. 
+To render the popup, I use a custom URL scheme (rationale below in the challenges section) that loads the popup html 
+along with other needed resources. 
 
 ### Task 5: 
 The custom URL change navigation delegate method is located at `Orion/UI/WebContent/NavigatorWebView/NavigatorWebView+NavigationDelegate.swift`.
@@ -88,8 +92,25 @@ The current implementation would need two changes to function in macOS 10.13+
 
 <details>
 <summary>Creating the JavaScript API</summary>
-To inject the javascript API, the `JSAPIFunctions` object takes in a WebKit view and runs a `WKUserScript`. 
-The payload contains a few javascript functions:
+
+**Problem**:
+I needed a way to add a JavaScript API into WebKit. I explored two solutions:
+1. Modifying webkit to add the `browser` object
+2. Injecting JavaScript code
+
+For the first solution, I tried to mirror the built in JavaScript `JSON` object, as `browser` would behave similarly. 
+I managed to get it initialised, however I could not figure out how to communicate with the main application.
+
+For the second solution, I created the API by assigning `browser.topSites.get` to a function. To communicate with the main app, 
+I explored two more solutions:
+1. By using a `WKScriptMessageHandler`, JavaScript can communicate with the main app by calling 
+`window.webkit.messageHandlers.logHandler.postMessage("message")`. This is the approach that I use for the `captureLog` function.
+However, it does not return a value, and therefore could not be used for the `topSites` API
+2. By using the `WKUIDelegate` to hijack `prompt` objects. Since the `prompt` function is synchronous and blocks execution until 
+its completion handler is executed, it allows for easy request-response requests from JavaScript to Swift.
+
+**Solution**: 
+The injected JavaScript contains a few javascript functions:
 - `captureLog`: which redirects `console.log` messages to the Xcode console
 - `queryNativeCode`: which provides the application with a function name and its parameters, and returns the application's response
 - `getTopSites`: gets a list of the top sites from the application
@@ -100,17 +121,16 @@ The `queryNativeCode` function works by calling the `prompt` function (usually u
 object contains a `payload`, which includes an identifier to identify it as a native code query, along with the function its
 attempting to call and optionally some arguments. When a `queryNativeCode` is called, the browser intercepts the prompt via a
 `WKScriptMessageHandler`. It then determines which function to call, decodes the arguments, and runs the completion handler with
-the returned result.
+the returned result. 
 
-Since the `prompt` function is synchronous and blocks execution until its completion handler is executed, it allows for
-easy request-response requests from JavaScript to Swift.
 </details>
 
 <details>
 <summary>Rendering the popup</summary>
+
 **Problem**:
 
-When the raw file:// url is used, there are issues. For example, take the following file structure
+When the raw `file` url is used, there are issues. For example, take the following file structure
 ```
 /path/to/extension/
     ├─ popup/
@@ -126,13 +146,13 @@ system is not `/path/to/extension` but rather the root of the computer (`/`), th
 
 **Solution**:
 
-WebKit has a  `loadFileURL` function that takes an optional `allowingReadAccessTo` URL. However, this approach
-did not work.
-
 The solution I settled on uses a custom URL scheme, namely `firefox-extension`. The file url above would translate to
 `firefox-extension://[extension id]/popup/panel.html`. The ``ExtensionWebViewController``
 intercepts this request via `WKURLSchemeHandler`, and supplies webkit with the contents of the correct file.
 
 In this new system, `<script src="/popup/panel.js"></script>` would be correctly loaded as
 `firefox-extension://[extension id]/popup/panel.js`.
+
+I tried to use WebKit's' `loadFileURL` function that takes an optional `allowingReadAccessTo` URL. However, this approach
+did not work.
 </details>
