@@ -68,7 +68,21 @@ the `webView(_:urlChange:)` function of `WKNavigationDelegatePlus` (a protocol e
 There is a similar function that detects the change in title, which is used to keep the titles in the `TopSites` API accurate.
 
 ## macOS 10.13+ Compatibility (Task 6)
-TODO
+The current implementation would need two changes to function in macOS 10.13+
+1. Combine
+    - Minimum requirement: macOS 10.15.
+    - Use within the project:
+        - Telling the WindowController to update whenever new extensions are added
+    - Possible fixes:
+        - Callback function
+        - Reloading the window controller after the `loadXPI` function is called
+2. NSImage creation using SF Symbols
+    - Minimum requirement: macOS 11
+    - Use within the project:
+        - Add new tab icon
+        - Back/forward chevron icons
+    - Possible fixes:
+        - Embed the image files into assets and load them using `init(named:)`
 
 ## Largest challenges and how I solved them (Task 7)
 
