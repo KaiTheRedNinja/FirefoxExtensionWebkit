@@ -25,6 +25,7 @@ class AddressBarView: NSView {
         addSubview(textField)
     }
 
+    /// Change the URL of the page to whatever the address bar is
     @objc func updateURL() {
         mainWindow?.changePageURL(to: textField.stringValue)
     }

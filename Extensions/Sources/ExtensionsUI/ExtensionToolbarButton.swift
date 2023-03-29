@@ -8,6 +8,8 @@
 import Cocoa
 import ExtensionsModel
 
+/// An NSButton for an extension in the toolbar, containing additional information about the extension it represents
 public class ExtensionToolbarButton: NSButton {
+    /// The extension that this extension toolbar button corresponds with
     public var correspondingExtension: FirefoxExtension?
 }

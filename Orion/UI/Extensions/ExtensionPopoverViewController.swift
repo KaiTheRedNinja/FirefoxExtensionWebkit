@@ -10,4 +10,6 @@ import WebKit
 import UniformTypeIdentifiers
 import ExtensionsUI
 
+/// An `ExtensionWebViewController` subclass, because XIB files
+/// cannot be put into modules.
 class ExtensionPopoverViewController: ExtensionWebViewController {}

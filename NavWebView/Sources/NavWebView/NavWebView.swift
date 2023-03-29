@@ -1,23 +1,18 @@
 //
-//  NavigatorWebView.swift
+//  NavWebView.swift
 //  Orion
 //
-//  Created by Kai Quan Tay on 25/3/23.
+//  Created by Kai Quan Tay on 28/3/23.
 //
 
 import Cocoa
 import WebKit
 
-class NavigatorWebView: WKWebView {
-    var mainWindow: WindowController?
-
+class NavWebView: WKWebView {
     var webViewURLObserver: NSKeyValueObservation?
     var webViewTitleObserver: NSKeyValueObservation?
 
     /// A dictionary mapping source URLs to destination URLs
-    ///
-    /// This is to keep track of downloads so that when they're complete, things can be done,
-    /// like loading the firefox extension if it was one
     var downloadURLs: [URL: URL] = [:]
 
     override init(frame frameRect: CGRect, configuration: WKWebViewConfiguration = .init()) {
@@ -28,7 +23,7 @@ class NavigatorWebView: WKWebView {
         autoresizingMask = [.height, .width]
         navigationDelegate = self
 
-        // watch the address and title for changes
+        // watch the address and title
         self.webViewURLObserver = observe(\.url) { [weak self] webView, change in
             guard let navDelegate = self?.navigationDelegate as? WKNavigationDelegatePlus else { return }
             navDelegate.webView(webView, urlChange: change)
@@ -43,7 +38,6 @@ class NavigatorWebView: WKWebView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    /// Loads a given page
     func loadPage(string: String) {
         guard let url = URL(string: string) else { return }
         let request = URLRequest(url: url)

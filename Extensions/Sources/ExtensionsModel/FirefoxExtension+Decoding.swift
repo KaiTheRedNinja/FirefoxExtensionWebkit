@@ -34,26 +34,26 @@ extension FirefoxExtension {
             return nil
         }
 
+        // Icons in the manifest is [String: String], but FirefoxExtension expects [Int: String]
+        // so it needs to be converted
         guard let iconsRaw = json["icons"] as? [String: String] else { return nil }
         var icons = [Int: String]()
         for (key, value) in iconsRaw {
             guard let size = Int(key) else {
-                print("Could not get icon size")
+                print("Could not get extension icon size: \(key)")
                 return nil
             }
             icons[size] = value
         }
 
-        let ffExtension = FirefoxExtension(author: author,
-                                           icons: icons,
-                                           name: name,
-                                           path: manifestURL.deletingLastPathComponent(),
-                                           description: description,
-                                           popupPage: popupPage,
-                                           optionsPage: optionsUIPage,
-                                           permissions: permissions)
-
-        return ffExtension
+        return FirefoxExtension(author: author,
+                                icons: icons,
+                                name: name,
+                                path: manifestURL.deletingLastPathComponent(),
+                                description: description,
+                                popupPage: popupPage,
+                                optionsPage: optionsUIPage,
+                                permissions: permissions)
     }
 
     /// Unzips a firefox extension XPI file
@@ -67,7 +67,7 @@ extension FirefoxExtension {
                                 deleteOnFail: Bool = false) -> URL? {
         guard url.description.hasSuffix(".xpi") else { return nil }
         var filename = url.lastPathComponent
-        // remove the trailing .xpi
+        // remove the trailing .xpi from the filename
         filename = String(filename.dropLast(4))
         let unzippedFilePath = url.deletingLastPathComponent().appendingPathComponent(filename)
         let fileManager = FileManager.default

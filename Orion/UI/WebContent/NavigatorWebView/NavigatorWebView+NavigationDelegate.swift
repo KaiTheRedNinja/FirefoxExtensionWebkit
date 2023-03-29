@@ -31,7 +31,9 @@ extension NavigatorWebView: WKNavigationDelegatePlus {
     }
 }
 
-protocol WKNavigationDelegatePlus: WKNavigationDelegate {
+public protocol WKNavigationDelegatePlus: WKNavigationDelegate {
+    /// Tells the delegate that the URL of the web view has changed
     func webView(_ webView: WKWebView, urlChange: NSKeyValueObservedChange<URL?>)
+    /// Tells the delegate that the title of the web view has changed
     func webView(_ webView: WKWebView, titleChange: NSKeyValueObservedChange<String?>)
 }

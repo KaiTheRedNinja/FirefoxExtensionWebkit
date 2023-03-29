@@ -8,8 +8,11 @@
 import Foundation
 
 enum TopSitesAPI {
+    /// A struct that contains information about a Top Site
     struct SiteData: Codable {
+        /// The number of visits to that site
         var visitCount: Int
+        /// The title of that site
         var title: String
 
         init(visitCount: Int, title: String) {
@@ -19,7 +22,7 @@ enum TopSitesAPI {
     }
 
     private static var topSites: [URL: SiteData] {
-        get {
+        get { // note: this may have poor performance if the file gets too large
             do {
                 let data = try Data(contentsOf: FileManager.default.getDocumentsDirectory()
                     .appendingPathComponent("extensions/topSites.json"))
@@ -39,6 +42,10 @@ enum TopSitesAPI {
         }
     }
 
+    /// Registers a site visit
+    /// - Parameters:
+    ///   - url: The URL of the page that was visited
+    ///   - title: The ttile of the page that was visited
     static func addSiteVisit(url: URL, title: String) {
         // make sure that the URL doesn't have a ending extension
         // this is to avoid file downloads from being counted as common sites
@@ -47,12 +54,23 @@ enum TopSitesAPI {
                               title: title)
     }
 
+    /// Update the title of a site.
+    ///
+    /// Sometimes, when ``addSiteVisit(url:title:)`` is called, the title isn't fully loaded.
+    /// When ``WKNavigationDelegatePlus/webView(_:titleChange:)`` is triggered, this function
+    /// can be run.
+    /// - Parameters:
+    ///   - url: The URL to update
+    ///   - newTitle: The title to use
     static func updateSiteTitle(url: URL, title newTitle: String) {
         guard var siteData = topSites[url] else { return }
         siteData.title = newTitle
         topSites[url] = siteData
     }
 
+    /// Gets the n number of top sites
+    /// - Parameter number: The number of top sites to get
+    /// - Returns: An array of tuples containing the URL and the site's ``SiteData``
     static func getTopSites(number: Int) -> [(URL, SiteData)] {
         let topSites = self.topSites
         var topInts = [(key: URL, value: SiteData)]()

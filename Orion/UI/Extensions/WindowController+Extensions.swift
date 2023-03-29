@@ -34,6 +34,7 @@ extension WindowController: ExtensionWebViewDataSource {
         popover.show(relativeTo: .zero, of: sender, preferredEdge: .maxY)
     }
 
+    // MARK: ExtensionWebViewDataSource
     func getTopSites(number: Int) -> [[String: String]] {
         let topSites = TopSitesAPI.getTopSites(number: number)
         return topSites.map { item in
