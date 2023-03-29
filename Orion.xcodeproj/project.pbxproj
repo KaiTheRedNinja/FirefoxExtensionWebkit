@@ -63,6 +63,7 @@
 		93FD519929D31CBF00E365F3 /* NavigatorWebView+NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigatorWebView+NavigationDelegate.swift"; sourceTree = "<group>"; };
 		93FD519B29D31D0A00E365F3 /* NavigatorWebView+WKDownloadDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigatorWebView+WKDownloadDelegate.swift"; sourceTree = "<group>"; };
 		93FD519D29D321A300E365F3 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebKit.framework; sourceTree = "<group>"; };
+		93FD51A529D3ED5000E365F3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 		93D6702A29CB14BB005DE788 = {
 			isa = PBXGroup;
 			children = (
+				93FD51A529D3ED5000E365F3 /* README.md */,
 				9396828C29D1641D00AB4A6B /* Extensions */,
 				93D6703529CB14BB005DE788 /* Orion */,
 				93D6703429CB14BB005DE788 /* Products */,
