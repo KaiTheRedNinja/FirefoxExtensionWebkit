@@ -34,7 +34,7 @@ to make sure all navigated URLs are served for topSites API.
 
 The application uses its documents folder to store the extension data.
 - `extensions` directory: `/Users/[username]/Library/Containers/com.kaithebuilder.Orion/Data/Documents/extensions/`
-- `topSites.json`: `/Users/kaitay/Library/Containers/com.kaithebuilder.Orion/Data/Documents/extensions/topSites.json`
+- `topSites.json`: `/Users/[username]/Library/Containers/com.kaithebuilder.Orion/Data/Documents/extensions/topSites.json`
 
 ### Task 1
 WebKit is located at WebKit.framework, prebuilt build 262215 from MARCH 28, 2023 AT 09:07 PM GMT+8 from 
@@ -101,8 +101,8 @@ I needed a way to add a JavaScript API into WebKit. I explored two solutions:
 For the first solution, I tried to mirror the built in JavaScript `JSON` object, as `browser` would behave similarly. 
 I managed to get it initialised, however I could not figure out how to communicate with the main application.
 
-For the second solution, I created the API by assigning `browser.topSites.get` to a function. To communicate with the main app, 
-I explored two more solutions:
+For the second solution, I created the API by injecting some JS to assign `browser.topSites.get` to a function. 
+To communicate with the main app, I explored two more solutions:
 1. By using a `WKScriptMessageHandler`, JavaScript can communicate with the main app by calling 
 `window.webkit.messageHandlers.logHandler.postMessage("message")`. This is the approach that I use for the `captureLog` function.
 However, it does not return a value, and therefore could not be used for the `topSites` API
@@ -134,8 +134,8 @@ When the raw `file` url is used, there are issues. For example, take the followi
 ```
 /path/to/extension/
     ├─ popup/
-    ├─ panel.html
-    ├─ panel.js
+        ├─ panel.html
+        ├─ panel.js
 ```
 In this example, to load panel.html, the URL would be `file:///path/to/extension/popup/panel.html`
 

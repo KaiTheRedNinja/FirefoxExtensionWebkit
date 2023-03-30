@@ -23,7 +23,7 @@ public enum JSAPIFunctions {
         uiDelegate: UIDelegate,
         messageHandler: MessageHandler
     ) {
-        // inject JS to capture console.log output and send to iOS
+        // inject JS to capture console.log output and send to macOS
         let source = jsToInject(for: ext)
 
         let script = WKUserScript(source: source, injectionTime: .atDocumentStart, forMainFrameOnly: false)
