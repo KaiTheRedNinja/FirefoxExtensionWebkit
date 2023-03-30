@@ -28,7 +28,6 @@ window.console.error = captureLog;
     /// Defines a function to ask the native app to run a function with optional parameters
     static let queryNativeCode: String = """
 function queryNativeCode(funcName, data) {
-    console.log('querying native app: ' + funcName);
     try {
         var type = "SJbridge";
         var payload = {type: type, functionName: funcName, data: data};

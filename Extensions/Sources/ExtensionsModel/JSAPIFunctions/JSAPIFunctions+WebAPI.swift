@@ -14,7 +14,6 @@ extension JSAPIFunctions {
 function getTopSites() {
     const topSites = eval(queryNativeCode("getTopSites", {}));
     const resolvingPromise = Promise.resolve(topSites);
-    console.log("Top sites promise made")
     return resolvingPromise
 }
 
@@ -46,7 +45,6 @@ browser.storage.local.get = getStorageLocal;
     /// Injects `browser.tabs.create`
     static let openNewTab: String = """
 function createTab(params) {
-    console.log("Creating tab " + params.url)
     queryNativeCode("createTab", params);
 }
 browser.tabs = {};
@@ -56,7 +54,6 @@ browser.tabs.create = createTab;
     /// Injects `browser.tabs.update`
     static let updateCurrentTab: String = """
 function updateCurrentTab(params) {
-    console.log("Updating tabs")
     queryNativeCode("updateCurrentTab", params)
 }
 browser.tabs.update = updateCurrentTab;
